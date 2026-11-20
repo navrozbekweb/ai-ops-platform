@@ -1,0 +1,120 @@
+@layer theme, base, antd, components, utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Dizayn tokenlari ---------- */
+:root {
+  color-scheme: light;
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #536074;
+  --accent: #2563eb;
+  --accent-text: #1d4ed8;
+  --sidebar: #0b1b33;
+  --sidebar-active: #14325a;
+  --sidebar-text: #cbd5e1;
+  --success: #166534;
+  --warning: #92400e;
+  --danger: #991b1b;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0e1015;
+  --surface: #171a22;
+  --surface-2: #12151c;
+  --border: #272c38;
+  --text: #e7eaf0;
+  --muted: #9aa4b5;
+  --accent: #2563eb;
+  --accent-text: #93c5fd;
+  --sidebar: #0a1426;
+  --sidebar-active: #14325a;
+  --sidebar-text: #cbd5e1;
+  --success: #86efac;
+  --warning: #fcd34d;
+  --danger: #fca5a5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-text: var(--sidebar-text);
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter Variable", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Login: kursor ortidan ochiladigan qatlam ---------- */
+.spotlight-root {
+  --sx: 30%;
+  --sy: 52%;
+}
+
+.spotlight-base {
+  background:
+    repeating-linear-gradient(
+      176deg,
+      rgb(255 255 255 / 0.035) 0 2px,
+      transparent 2px 38px
+    ),
+    linear-gradient(180deg, #0a1426 0%, #0e1e3a 45%, #09152a 100%);
+}
+
+.spotlight-reveal {
+  background:
+    repeating-linear-gradient(
+      176deg,
+      rgb(255 255 255 / 0.22) 0 2px,
+      transparent 2px 38px
+    ),
+    linear-gradient(180deg, #1d4ed8 0%, #38bdf8 45%, #1e3a8a 100%);
+  -webkit-mask-image: radial-gradient(
+    circle 300px at var(--sx) var(--sy),
+    rgb(0 0 0 / 1) 0%,
+    rgb(0 0 0 / 1) 40%,
+    rgb(0 0 0 / 0.75) 60%,
+    rgb(0 0 0 / 0.4) 75%,
+    rgb(0 0 0 / 0.12) 88%,
+    rgb(0 0 0 / 0) 100%
+  );
+  mask-image: radial-gradient(
+    circle 300px at var(--sx) var(--sy),
+    rgb(0 0 0 / 1) 0%,
+    rgb(0 0 0 / 1) 40%,
+    rgb(0 0 0 / 0.75) 60%,
+    rgb(0 0 0 / 0.4) 75%,
+    rgb(0 0 0 / 0.12) 88%,
+    rgb(0 0 0 / 0) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

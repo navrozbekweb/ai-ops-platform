@@ -1,0 +1,138 @@
+{
+  "common": {
+    "appName": "AI Ops",
+    "tagline": "AI business operations platform",
+    "language": "Language",
+    "logout": "Log out",
+    "menu": "Menu",
+    "close": "Close",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "roles": {
+    "admin": "Admin",
+    "manager": "Manager",
+    "employee": "Employee"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "roles": "Roles and permissions",
+    "analytics": "Company analytics",
+    "team": "My team",
+    "tasks": "Tasks",
+    "approvals": "Approvals",
+    "documents": "Documents",
+    "ai": "AI assistant",
+    "audit": "Audit log",
+    "settings": "System settings",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": {
+      "headlineA": "Your company",
+      "headlineB": "run from one place",
+      "lead": "Tasks, people and documents with an AI assistant on a single dashboard.",
+      "title": "Sign in",
+      "subtitle": "Enter your work email and password",
+      "email": "Email",
+      "emailPlaceholder": "name@company.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "forgot": "Forgot your password?",
+      "submit": "Sign in",
+      "submitting": "Checking...",
+      "demoTitle": "Demo accounts",
+      "demoHint": "Click to fill in the fields",
+      "demoPassword": "Password",
+      "errors": {
+        "invalid": "Incorrect email or password.",
+        "rateLimited": "Too many attempts. Please try again in a few minutes.",
+        "disabled": "Demo sign-in is currently turned off.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email. If an account exists, we will send a reset link.",
+      "submit": "Send reset link",
+      "submitting": "Sending...",
+      "sent": "If this email exists in the system, a reset link has been sent. Check your inbox.",
+      "demoLink": "Demo mode: the link is shown here instead of being emailed",
+      "demoOpen": "Open password reset",
+      "back": "Back to sign in"
+    },
+    "reset": {
+      "title": "Set a new password",
+      "subtitle": "At least 8 characters with upper and lower case letters and a digit.",
+      "password": "New password",
+      "confirm": "Repeat password",
+      "submit": "Save password",
+      "submitting": "Saving...",
+      "success": "Password updated. You can sign in now.",
+      "toLogin": "Go to sign in",
+      "invalidToken": "This link is invalid or has expired. Request a new one.",
+      "requestNew": "Request a new link"
+    },
+    "validation": {
+      "emailRequired": "Enter your email",
+      "emailInvalid": "Email format is invalid",
+      "passwordRequired": "Enter your password",
+      "passwordWeak": "At least 8 characters with upper, lower case and a digit",
+      "passwordMismatch": "Passwords do not match"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome, {name}",
+    "subtitle": {
+      "admin": "System, users and permissions. Sample data.",
+      "manager": "Team and company overview. Sample data.",
+      "employee": "Your tasks and documents. Sample data."
+    },
+    "kpi": {
+      "users": "Users",
+      "sessions": "Active sessions",
+      "requests": "Pending requests",
+      "system": "System status",
+      "stable": "Stable",
+      "teamTasks": "Team tasks",
+      "pending": "Awaiting approval",
+      "teamPerf": "Team performance",
+      "late": "Overdue",
+      "myTasks": "My active tasks",
+      "doneWeek": "Done this week",
+      "myPerf": "My performance"
+    },
+    "capabilitiesTitle": "Your permissions",
+    "capabilities": {
+      "admin": [
+        "All features and sections",
+        "Add employees and manage roles",
+        "System and AI settings",
+        "View the audit log"
+      ],
+      "manager": [
+        "View company-wide analytics (read only)",
+        "Assign tasks to your own team",
+        "Approve submitted work",
+        "Cannot add employees"
+      ],
+      "employee": [
+        "Own tasks and documents",
+        "Use the AI assistant",
+        "Edit your profile",
+        "Other employees' data is hidden"
+      ]
+    }
+  },
+  "placeholder": {
+    "text": "This section will be added in the coming weeks. Role-based sign-in and menus work now.",
+    "access": "This page is available to your role."
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "common": {
+    "appName": "AI Ops",
+    "tagline": "Biznes uchun AI operatsion platforma",
+    "language": "Til",
+    "logout": "Chiqish",
+    "menu": "Menyu",
+    "close": "Yopish",
+    "showPassword": "Parolni ko'rsatish",
+    "hidePassword": "Parolni yashirish"
+  },
+  "theme": {
+    "label": "Mavzu",
+    "light": "Yorug'",
+    "dark": "Tungi",
+    "system": "Tizim"
+  },
+  "roles": {
+    "admin": "Admin",
+    "manager": "Rahbar",
+    "employee": "Xodim"
+  },
+  "nav": {
+    "dashboard": "Boshqaruv paneli",
+    "users": "Foydalanuvchilar",
+    "roles": "Rollar va huquqlar",
+    "analytics": "Korxona tahlili",
+    "team": "Mening jamoam",
+    "tasks": "Vazifalar",
+    "approvals": "Tasdiqlash",
+    "documents": "Hujjatlar",
+    "ai": "AI yordamchi",
+    "audit": "Audit jurnali",
+    "settings": "Tizim sozlamalari",
+    "profile": "Profil"
+  },
+  "auth": {
+    "login": {
+      "headlineA": "Korxonangiz",
+      "headlineB": "bir joyda boshqariladi",
+      "lead": "Vazifalar, xodimlar va hujjatlar AI yordamchi bilan bitta panelda.",
+      "title": "Tizimga kirish",
+      "subtitle": "Ish emailingiz va parolingizni kiriting",
+      "email": "Email",
+      "emailPlaceholder": "ism@kompaniya.uz",
+      "password": "Parol",
+      "passwordPlaceholder": "Parolingiz",
+      "forgot": "Parolni unutdingizmi?",
+      "submit": "Kirish",
+      "submitting": "Tekshirilmoqda...",
+      "demoTitle": "Demo hisoblar",
+      "demoHint": "Bosib, maydonlarni to'ldiring",
+      "demoPassword": "Parol",
+      "errors": {
+        "invalid": "Email yoki parol noto'g'ri.",
+        "rateLimited": "Juda ko'p urinish. Bir necha daqiqadan keyin qayta urinib ko'ring.",
+        "disabled": "Demo kirish hozircha o'chirilgan.",
+        "generic": "Xatolik yuz berdi. Qayta urinib ko'ring."
+      }
+    },
+    "forgot": {
+      "title": "Parolni tiklash",
+      "subtitle": "Emailingizni kiriting. Hisob mavjud bo'lsa, tiklash havolasi yuboriladi.",
+      "submit": "Havola yuborish",
+      "submitting": "Yuborilmoqda...",
+      "sent": "Agar bu email tizimda mavjud bo'lsa, tiklash havolasi yuborildi. Pochtangizni tekshiring.",
+      "demoLink": "Demo rejim: havola pochta o'rniga shu yerda ko'rsatiladi",
+      "demoOpen": "Parolni tiklashni ochish",
+      "back": "Kirish sahifasiga qaytish"
+    },
+    "reset": {
+      "title": "Yangi parol o'rnatish",
+      "subtitle": "Kamida 8 belgi: katta va kichik harf hamda raqam bo'lsin.",
+      "password": "Yangi parol",
+      "confirm": "Parolni takrorlang",
+      "submit": "Parolni saqlash",
+      "submitting": "Saqlanmoqda...",
+      "success": "Parol yangilandi. Endi tizimga kirishingiz mumkin.",
+      "toLogin": "Kirish sahifasiga o'tish",
+      "invalidToken": "Havola yaroqsiz yoki muddati tugagan. Yangi havola so'rang.",
+      "requestNew": "Yangi havola so'rash"
+    },
+    "validation": {
+      "emailRequired": "Emailni kiriting",
+      "emailInvalid": "Email noto'g'ri formatda",
+      "passwordRequired": "Parolni kiriting",
+      "passwordWeak": "Kamida 8 belgi: katta, kichik harf va raqam",
+      "passwordMismatch": "Parollar mos kelmadi"
+    }
+  },
+  "dashboard": {
+    "welcome": "Xush kelibsiz, {name}",
+    "subtitle": {
+      "admin": "Tizim, foydalanuvchilar va huquqlar. Namuna ma'lumotlar.",
+      "manager": "Jamoa va korxona ko'rinishi. Namuna ma'lumotlar.",
+      "employee": "Sizning vazifalaringiz va hujjatlaringiz. Namuna ma'lumotlar."
+    },
+    "kpi": {
+      "users": "Foydalanuvchilar",
+      "sessions": "Faol sessiyalar",
+      "requests": "Kutilayotgan so'rovlar",
+      "system": "Tizim holati",
+      "stable": "Barqaror",
+      "teamTasks": "Jamoa vazifalari",
+      "pending": "Tasdiq kutmoqda",
+      "teamPerf": "Jamoa samaradorligi",
+      "late": "Kechikkanlar",
+      "myTasks": "Faol vazifalarim",
+      "doneWeek": "Shu hafta bajarildi",
+      "myPerf": "Mening samaradorligim"
+    },
+    "capabilitiesTitle": "Sizning huquqlaringiz",
+    "capabilities": {
+      "admin": [
+        "Barcha funksiyalar va bo'limlar",
+        "Xodim qo'shish va rollarni boshqarish",
+        "Tizim va AI sozlamalari",
+        "Audit jurnalini ko'rish"
+      ],
+      "manager": [
+        "Butun korxona tahlilini ko'rish (faqat o'qish)",
+        "O'z jamoasiga vazifa tayinlash",
+        "Topshirilgan ishlarni tasdiqlash",
+        "Xodim qo'shish mumkin emas"
+      ],
+      "employee": [
+        "O'z vazifalari va hujjatlari",
+        "AI yordamchidan foydalanish",
+        "Profilni tahrirlash",
+        "Boshqa xodimlar ma'lumoti yopiq"
+      ]
+    }
+  },
+  "placeholder": {
+    "text": "Bu bo'lim keyingi haftalarda qo'shiladi. Hozir rolga qarab kirish va menyu ishlayapti.",
+    "access": "Bu sahifa sizning rolingiz uchun ochiq."
+  }
+}
