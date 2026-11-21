@@ -134,5 +134,92 @@
   "placeholder": {
     "text": "This section will be added in the coming weeks. Role-based sign-in and menus work now.",
     "access": "This page is available to your role."
+  },
+  "navGroups": {
+    "overview": "Overview",
+    "work": "Work",
+    "administration": "Administration"
+  },
+  "shell": {
+    "skip": "Skip to main content",
+    "mainNav": "Main menu",
+    "collapse": "Collapse menu",
+    "expand": "Expand menu",
+    "breadcrumb": "Current path",
+    "search": "Search",
+    "account": "Account menu",
+    "profile": "Profile",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "palette": {
+    "title": "Quick search",
+    "placeholder": "Search for a section or action",
+    "empty": "Nothing found",
+    "pages": "Pages",
+    "actions": "Actions",
+    "hint": "Select: up/down, open: Enter, close: Esc",
+    "actionLight": "Switch to light theme",
+    "actionDark": "Switch to dark theme",
+    "actionSystem": "Use system theme",
+    "actionLogout": "Log out"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "label": "Notifications, unread: {count}",
+    "empty": "No new notifications",
+    "markAll": "Mark all as read",
+    "unread": "Unread",
+    "items": {
+      "roleChange": {
+        "title": "Manager role changed",
+        "body": "Permissions for the Finance manager were updated."
+      },
+      "passwordReset": {
+        "title": "Password reset request",
+        "body": "An employee requested a password reset."
+      },
+      "newUser": {
+        "title": "New employee added",
+        "body": "A new employee was assigned to Sales."
+      },
+      "approvalWaiting": {
+        "title": "Awaiting approval",
+        "body": "The monthly report draft is waiting for your decision."
+      },
+      "taskLate": {
+        "title": "Task overdue",
+        "body": "The supplier contract deadline has passed."
+      },
+      "reportReady": {
+        "title": "Report ready",
+        "body": "The weekly performance report has been generated."
+      },
+      "taskAssigned": {
+        "title": "New task",
+        "body": "You were assigned to update the customer database."
+      },
+      "deadlineSoon": {
+        "title": "Deadline approaching",
+        "body": "The weekly sales report is due today."
+      },
+      "approved": {
+        "title": "Work approved",
+        "body": "The proposal template was approved by your manager."
+      }
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page not found",
+      "text": "The page you are looking for does not exist or has moved.",
+      "back": "Back to dashboard"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "text": "The page could not be loaded. Please try again.",
+      "retry": "Try again"
+    },
+    "loading": "Loading"
   }
 }

@@ -3,11 +3,12 @@ import { HOME_SECTION } from "@/lib/auth/roles";
 import { loginSchema } from "@/lib/auth/schemas";
 import { createSession } from "@/lib/auth/session";
 import {
+  checkFailureLimit,
   clientIp,
   jsonError,
   jsonOk,
-  rateLimit,
   readJson,
+  recordFailure,
   resetRateLimit,
 } from "@/lib/api/guard";
 import { isMockAuthEnabled, verifyCredentials } from "@/lib/mock/users";
@@ -24,17 +25,23 @@ export async function POST(request: NextRequest) {
 
   const ipKey = `login:ip:${clientIp(request)}`;
   const accountKey = `login:acc:${email}`;
-  const ip = rateLimit(ipKey, MAX_ATTEMPTS * 4, WINDOW_MS);
-  const account = rateLimit(accountKey, MAX_ATTEMPTS, WINDOW_MS);
-  if (!ip.allowed || !account.allowed) {
-    const retryAfter = Math.max(ip.retryAfter, account.retryAfter);
+  const ip = checkFailureLimit(ipKey, MAX_ATTEMPTS * 4);
+  const account = checkFailureLimit(accountKey, MAX_ATTEMPTS);
+  if (ip.limited || account.limited) {
     const response = jsonError("rate_limited", 429);
-    response.headers.set("Retry-After", String(retryAfter));
+    response.headers.set(
+      "Retry-After",
+      String(Math.max(ip.retryAfter, account.retryAfter)),
+    );
     return response;
   }
 
   const user = verifyCredentials(email, password);
-  if (!user) return jsonError("invalid", 401);
+  if (!user) {
+    recordFailure(ipKey, WINDOW_MS);
+    recordFailure(accountKey, WINDOW_MS);
+    return jsonError("invalid", 401);
+  }
 
   resetRateLimit(accountKey);
   await createSession({

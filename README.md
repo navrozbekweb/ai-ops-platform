@@ -2,7 +2,7 @@
 
 Korxona rahbari va xodimlari uchun boshqaruv paneli. Next.js 16, TypeScript (strict), Tailwind CSS 4 va Ant Design asosida.
 
-**Holat:** 1-hafta tugagan (poydevor, dizayn tizimi, Light/Dark, Login/Logout/parolni tiklash, rolli kirish). Haftalik hisobotlar: [`reports/`](./reports).
+**Holat:** 2-hafta tugagan (1: poydevor, dizayn tizimi, Light/Dark, Login/Logout/parolni tiklash, rolli kirish; 2: Sidebar, Header, Navigation, tezkor qidiruv, bildirishnomalar). Haftalik hisobotlar: [`reports/`](./reports).
 
 ## Ishga tushirish
 
