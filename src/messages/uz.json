@@ -134,5 +134,92 @@
   "placeholder": {
     "text": "Bu bo'lim keyingi haftalarda qo'shiladi. Hozir rolga qarab kirish va menyu ishlayapti.",
     "access": "Bu sahifa sizning rolingiz uchun ochiq."
+  },
+  "navGroups": {
+    "overview": "Umumiy",
+    "work": "Ish",
+    "administration": "Ma'muriyat"
+  },
+  "shell": {
+    "skip": "Asosiy kontentga o'tish",
+    "mainNav": "Asosiy menyu",
+    "collapse": "Menyuni yig'ish",
+    "expand": "Menyuni yoyish",
+    "breadcrumb": "Joriy yo'l",
+    "search": "Qidirish",
+    "account": "Hisob menyusi",
+    "profile": "Profil",
+    "language": "Til",
+    "theme": "Mavzu"
+  },
+  "palette": {
+    "title": "Tezkor qidiruv",
+    "placeholder": "Bo'lim yoki amalni qidiring",
+    "empty": "Hech narsa topilmadi",
+    "pages": "Sahifalar",
+    "actions": "Amallar",
+    "hint": "Tanlash: yuqori/past, ochish: Enter, yopish: Esc",
+    "actionLight": "Yorug' rejimga o'tish",
+    "actionDark": "Tungi rejimga o'tish",
+    "actionSystem": "Tizim mavzusini ishlatish",
+    "actionLogout": "Tizimdan chiqish"
+  },
+  "notifications": {
+    "title": "Bildirishnomalar",
+    "label": "Bildirishnomalar, o'qilmagan: {count}",
+    "empty": "Yangi bildirishnoma yo'q",
+    "markAll": "Hammasini o'qilgan deb belgilash",
+    "unread": "O'qilmagan",
+    "items": {
+      "roleChange": {
+        "title": "Rahbar roli o'zgartirildi",
+        "body": "Moliya bo'limi rahbari huquqlari yangilandi."
+      },
+      "passwordReset": {
+        "title": "Parol tiklash so'rovi",
+        "body": "Xodim parolni tiklashni so'radi."
+      },
+      "newUser": {
+        "title": "Yangi xodim qo'shildi",
+        "body": "Savdo bo'limiga yangi xodim biriktirildi."
+      },
+      "approvalWaiting": {
+        "title": "Tasdiq kutilmoqda",
+        "body": "Oylik hisobot loyihasi sizning qaroringizni kutyapti."
+      },
+      "taskLate": {
+        "title": "Vazifa kechikdi",
+        "body": "Ta'minotchi shartnomasi muddati o'tib ketdi."
+      },
+      "reportReady": {
+        "title": "Hisobot tayyor",
+        "body": "Haftalik samaradorlik hisoboti shakllandi."
+      },
+      "taskAssigned": {
+        "title": "Yangi vazifa",
+        "body": "Sizga mijozlar bazasini yangilash vazifasi tayinlandi."
+      },
+      "deadlineSoon": {
+        "title": "Muddat yaqin",
+        "body": "Haftalik savdo hisoboti bugun topshirilishi kerak."
+      },
+      "approved": {
+        "title": "Ish tasdiqlandi",
+        "body": "Taklifnoma shabloni rahbar tomonidan tasdiqlandi."
+      }
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Sahifa topilmadi",
+      "text": "Siz izlagan sahifa mavjud emas yoki ko'chirilgan.",
+      "back": "Boshqaruv paneliga qaytish"
+    },
+    "generic": {
+      "title": "Xatolik yuz berdi",
+      "text": "Sahifani yuklab bo'lmadi. Qayta urinib ko'ring.",
+      "retry": "Qayta urinish"
+    },
+    "loading": "Yuklanmoqda"
   }
 }
