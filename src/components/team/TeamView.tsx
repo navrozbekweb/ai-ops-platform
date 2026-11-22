@@ -63,6 +63,7 @@ export function TeamView({
       id: "actions",
       header: t("columns.actions"),
       hiddenHeader: true,
+      mobileInline: true,
       cell: (p) => (
         <div className="flex justify-end">
           <Button

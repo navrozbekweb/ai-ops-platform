@@ -105,11 +105,12 @@ export function UsersView({
       id: "actions",
       header: t("columns.actions"),
       hiddenHeader: true,
+      mobileInline: true,
       className: "text-right",
       cell: (p) => {
         const self = p.id === currentUserId;
         return (
-          <div className="flex justify-end gap-1.5 whitespace-nowrap">
+          <div className="flex flex-wrap justify-end gap-1.5">
             <Button
               variant="ghost"
               size="sm"

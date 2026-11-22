@@ -2,7 +2,7 @@
 
 Korxona rahbari va xodimlari uchun boshqaruv paneli. Next.js 16, TypeScript (strict), Tailwind CSS 4 va Ant Design asosida.
 
-**Holat:** 3-hafta tugagan (1: poydevor, dizayn tizimi, Light/Dark, Login/Logout/parolni tiklash, rolli kirish; 2: Sidebar, Header, Navigation, tezkor qidiruv, bildirishnomalar; 3: Modal, Table, Form, Foydalanuvchilar, Vazifalar, Jamoa, Tasdiqlash). Haftalik hisobotlar: [`reports/`](./reports).
+**Holat:** 4 haftalik reja bajarilgan (poydevor va dizayn tizimi, rolli kirish, Sidebar/Header/Navigation, Modal/Table/Form, Foydalanuvchilar/Vazifalar/Jamoa/Tasdiqlash, responsive va qulaylik tekshiruvi). Haftalik hisobotlar: [`reports/`](./reports).
 
 ## Ishga tushirish
 
@@ -40,14 +40,15 @@ Ruxsatlar bitta joyda: [`src/lib/auth/roles.ts`](./src/lib/auth/roles.ts). Himoy
 
 ## Skriptlar
 
-| Buyruq              | Vazifa                                 |
-| ------------------- | -------------------------------------- |
-| `npm run dev`       | Ishlab chiqish serveri                 |
-| `npm run build`     | Production build                       |
-| `npm run lint`      | ESLint                                 |
-| `npm run typecheck` | TypeScript tekshiruvi                  |
-| `npm run format`    | Prettier                               |
-| `npm run test:e2e`  | Playwright E2E (avval `npm run build`) |
+| Buyruq               | Vazifa                                 |
+| -------------------- | -------------------------------------- |
+| `npm run dev`        | Ishlab chiqish serveri                 |
+| `npm run build`      | Production build                       |
+| `npm run lint`       | ESLint                                 |
+| `npm run typecheck`  | TypeScript tekshiruvi                  |
+| `npm run check:i18n` | Tarjimalar to'liqligi (uz, ru, en)     |
+| `npm run format`     | Prettier                               |
+| `npm run test:e2e`   | Playwright E2E (avval `npm run build`) |
 
 E2E uchun bir marta `npx playwright install chromium` kerak. Tayyor Chromium bo'lsa, `PW_CHROMIUM_PATH=/yo'l/chrome` bilan ishga tushirish mumkin. Testlar production serverda (`next start`) ishlaydi.
 
@@ -60,13 +61,15 @@ src/
   app/[locale]/(auth)/    login, forgot-password, reset-password
   app/[locale]/(app)/     himoyalangan panel (dashboard, bo'limlar)
   app/api/auth/           login, logout, forgot-password, reset-password
+  app/api/users, tasks/   mock API (ruxsat serverda tekshiriladi)
   components/             ui/, auth/, layout/, providers/
   i18n/                   next-intl sozlamalari (uz, ru, en)
   lib/auth/               rollar, token, sessiya, Zod sxemalari
+  lib/data/               MOCK ombor va servis (backend ulanganda almashtiriladi)
   lib/mock/               MOCK hisoblar (backend ulanganda olib tashlanadi)
   messages/               uz.json, ru.json, en.json
   proxy.ts                til + sessiya + rol himoyasi
-e2e/                      Playwright testlari
+e2e/                      Playwright testlari (kirish, navigatsiya, API, axe, responsive)
 reports/                  haftalik hisobotlar
 ```
 

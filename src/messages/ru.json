@@ -302,7 +302,7 @@
       "block": "Заблокировать: {name}",
       "blockShort": "Заблокировать",
       "unblock": "Разблокировать: {name}",
-      "unblockShort": "Активировать",
+      "unblockShort": "Разблокировать",
       "delete": "Удалить: {name}",
       "deleteShort": "Удалить"
     },

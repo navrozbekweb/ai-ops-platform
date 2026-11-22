@@ -22,12 +22,22 @@ export type Column<T> = {
   showFrom?: "md" | "lg";
   /** Sarlavha ko'rinmaydi, lekin ekran o'qish dasturi uchun qoladi (amallar ustuni). */
   hiddenHeader?: boolean;
+  /**
+   * Amallar kabi ustunlar uchun: telefonda ustun yashiriladi va mazmuni birinchi ustun ichida
+   * (matn tagida) ko'rsatiladi, shunda ularni topish uchun jadvalni yon tomonga surish shart emas.
+   */
+  mobileInline?: boolean;
   className?: string;
 };
 
 type Sort = { id: string; dir: "asc" | "desc" };
 
 const SHOW_FROM = { md: "hidden md:table-cell", lg: "hidden lg:table-cell" } as const;
+
+function columnVisibility<T>(column: Column<T>): string {
+  if (column.showFrom) return SHOW_FROM[column.showFrom];
+  return column.mobileInline ? SHOW_FROM.md : "";
+}
 
 /**
  * Jadval: qidiruv, saralash, sahifalash, bo'sh va yuklanish holatlari. Ma'lumot to'liq brauzerda
@@ -108,6 +118,7 @@ export function DataTable<T>({
     });
   };
 
+  const inlineColumns = columns.filter((column) => column.mobileInline);
   const hasToolbar = Boolean(searchText || filters || actions);
   const noRows = !loading && rows.length === 0;
   const noMatches = !loading && rows.length > 0 && sorted.length === 0;
@@ -181,9 +192,9 @@ export function DataTable<T>({
                       key={column.id}
                       scope="col"
                       aria-sort={ariaSort}
-                      className={`text-muted px-4 py-3 text-left text-xs font-semibold tracking-wide whitespace-nowrap uppercase ${
-                        column.showFrom ? SHOW_FROM[column.showFrom] : ""
-                      }`}
+                      className={`text-muted px-4 py-3 text-left text-xs font-semibold tracking-wide whitespace-nowrap uppercase ${columnVisibility(
+                        column,
+                      )}`}
                     >
                       {column.hiddenHeader ? (
                         <span className="sr-only">{column.header}</span>
@@ -191,7 +202,7 @@ export function DataTable<T>({
                         <button
                           type="button"
                           onClick={() => toggleSort(column.id)}
-                          className="hover:text-text focus-visible:outline-accent -mx-1 inline-flex items-center gap-1.5 rounded px-1 py-0.5 uppercase focus-visible:outline-2"
+                          className="hover:text-text focus-visible:outline-accent -mx-1 inline-flex min-h-7 items-center gap-1.5 rounded px-1 uppercase focus-visible:outline-2"
                         >
                           {column.header}
                           <span
@@ -229,7 +240,7 @@ export function DataTable<T>({
                       {columns.map((column) => (
                         <td
                           key={column.id}
-                          className={`px-4 py-4 ${column.showFrom ? SHOW_FROM[column.showFrom] : ""}`}
+                          className={`px-4 py-4 ${columnVisibility(column)}`}
                         >
                           <div className="bg-surface-2 h-4 w-3/4 animate-pulse rounded motion-reduce:animate-none" />
                         </td>
@@ -241,14 +252,21 @@ export function DataTable<T>({
                       key={getRowId(row)}
                       className="border-border hover:bg-surface-2/60 border-t"
                     >
-                      {columns.map((column) => (
+                      {columns.map((column, index) => (
                         <td
                           key={column.id}
-                          className={`px-4 py-3 align-middle ${
-                            column.showFrom ? SHOW_FROM[column.showFrom] : ""
-                          } ${column.className ?? ""}`}
+                          className={`px-4 py-3 align-middle ${columnVisibility(
+                            column,
+                          )} ${column.className ?? ""}`}
                         >
                           {column.cell(row)}
+                          {index === 0 && inlineColumns.length > 0 ? (
+                            <div className="mt-2 flex flex-col items-start gap-2 md:hidden [&>div>div]:justify-start">
+                              {inlineColumns.map((inline) => (
+                                <div key={inline.id}>{inline.cell(row)}</div>
+                              ))}
+                            </div>
+                          ) : null}
                         </td>
                       ))}
                     </tr>

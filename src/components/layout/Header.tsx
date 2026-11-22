@@ -38,13 +38,17 @@ export function Header({
         <button
           type="button"
           onClick={onOpenSearch}
-          aria-label={t("shell.search")}
           aria-keyshortcuts="Control+K Meta+K"
           className="border-border text-muted hover:bg-surface-2 flex h-11 items-center gap-2 rounded-lg border px-3.5 text-sm md:w-56"
         >
           <SearchOutlined aria-hidden="true" />
-          <span className="hidden flex-1 text-left md:inline">{t("shell.search")}</span>
-          <kbd className="border-border hidden rounded border px-1.5 py-0.5 text-[11px] font-semibold md:inline">
+          <span className="sr-only md:not-sr-only md:flex-1 md:text-left">
+            {t("shell.search")}
+          </span>
+          <kbd
+            aria-hidden="true"
+            className="border-border hidden rounded border px-1.5 py-0.5 text-[11px] font-semibold md:inline"
+          >
             Ctrl K
           </kbd>
         </button>

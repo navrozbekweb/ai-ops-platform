@@ -95,6 +95,7 @@ export function TasksView({
       id: "actions",
       header: t("columns.actions"),
       hiddenHeader: true,
+      mobileInline: true,
       cell: (task) => (
         <TaskActions
           task={task}
