@@ -38,7 +38,7 @@ export const DEMO_ACCOUNTS: ReadonlyArray<MockUser & { password: string }> = [
     name: "Dilshod Karimov",
     email: "employee@aiops.uz",
     role: "employee",
-    dept: "Savdo",
+    dept: "Moliya",
     password: "Employee#2026",
   },
 ];

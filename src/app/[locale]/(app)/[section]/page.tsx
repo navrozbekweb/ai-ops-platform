@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
-import { HOME_SECTION, canAccess, isSection } from "@/lib/auth/roles";
-import { getSession } from "@/lib/auth/session";
+import { isSection } from "@/lib/auth/roles";
+import { requirePageActor } from "@/lib/auth/actor-page";
 
 export default async function SectionPage({
   params,
@@ -13,10 +12,8 @@ export default async function SectionPage({
   setRequestLocale(locale);
   if (!isSection(section)) notFound();
 
-  const session = await getSession();
-  if (!session) redirect({ href: "/login", locale });
-  // Rol bo'yicha ikkinchi tekshiruv (proxy'dan tashqari).
-  if (!canAccess(session!.role, section)) redirect({ href: `/${HOME_SECTION}`, locale });
+  // Rol bo'yicha ikkinchi tekshiruv (proxy'dan tashqari), rol ombordan olinadi.
+  await requirePageActor(locale, section);
 
   const t = await getTranslations();
 

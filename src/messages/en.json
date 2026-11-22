@@ -55,7 +55,8 @@
         "invalid": "Incorrect email or password.",
         "rateLimited": "Too many attempts. Please try again in a few minutes.",
         "disabled": "Demo sign-in is currently turned off.",
-        "generic": "Something went wrong. Please try again."
+        "generic": "Something went wrong. Please try again.",
+        "blocked": "This account is blocked. Contact an administrator."
       }
     },
     "forgot": {
@@ -221,5 +222,239 @@
       "retry": "Try again"
     },
     "loading": "Loading"
+  },
+  "ui": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "table": {
+    "search": "Search",
+    "noResults": "Nothing found",
+    "noResultsText": "Try a different search term.",
+    "clear": "Clear search",
+    "perPage": "Per page",
+    "range": "{from}–{to} / {total}",
+    "prev": "Previous page",
+    "next": "Next page",
+    "resultsCount": "{count, plural, one {# result} other {# results}}"
+  },
+  "forms": {
+    "validation": {
+      "nameRequired": "Enter a name (at least 2 characters)",
+      "nameTooLong": "Name is too long",
+      "emailRequired": "Enter an email",
+      "emailInvalid": "Email is not valid",
+      "emailTaken": "This email is already registered",
+      "roleRequired": "Choose a role",
+      "deptRequired": "Enter a department",
+      "deptTooLong": "Department name is too long",
+      "titleRequired": "Enter a title (at least 3 characters)",
+      "titleTooLong": "Title is too long (up to 120 characters)",
+      "descriptionTooLong": "Description is too long (up to 600 characters)",
+      "assigneeRequired": "Choose an assignee",
+      "priorityRequired": "Choose a priority",
+      "dueInvalid": "Enter a valid due date",
+      "noteRequired": "Enter a reason (at least 3 characters)",
+      "noteTooLong": "Note is too long (up to 300 characters)"
+    }
+  },
+  "apiErrors": {
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You don't have permission for this action.",
+    "notFound": "Not found. Someone else may have removed it.",
+    "emailTaken": "This email is already registered.",
+    "selfAction": "You can't do this to your own account.",
+    "lastAdmin": "The last active admin can't be changed or removed.",
+    "hasOpenTasks": "This user has unfinished tasks. Reassign or delete them first.",
+    "invalidAssignee": "You can't assign a task to this person.",
+    "invalidManager": "The manager is not valid.",
+    "invalidTransition": "The task can't be moved to this status.",
+    "noteRequired": "Enter the reason for returning it.",
+    "validation": "The data you entered is not valid.",
+    "empty": "There is nothing to change.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "users": {
+    "title": "Users",
+    "subtitle": "Add employees, change roles and block accounts. Admin only.",
+    "caption": "Users table",
+    "add": "Add user",
+    "columns": {
+      "name": "User",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "blocked": "Blocked"
+    },
+    "filters": {
+      "role": "Role",
+      "all": "All"
+    },
+    "actions": {
+      "edit": "Edit {name}",
+      "editShort": "Edit",
+      "block": "Block {name}",
+      "blockShort": "Block",
+      "unblock": "Unblock {name}",
+      "unblockShort": "Activate",
+      "delete": "Delete {name}",
+      "deleteShort": "Delete"
+    },
+    "form": {
+      "createTitle": "New user",
+      "createDesc": "Enter the details. The user is added as invited.",
+      "editTitle": "Edit user",
+      "editDesc": "If the role changes, permissions change immediately.",
+      "name": "Full name",
+      "email": "Email",
+      "emailLocked": "Email identifies the account and can't be changed.",
+      "inviteNote": "The user sets their own password (in mock mode only the demo accounts can sign in).",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "managerNone": "No manager",
+      "managerHint": "The manager assigns tasks to this employee and approves their work.",
+      "submitCreate": "Add",
+      "submitEdit": "Save"
+    },
+    "confirm": {
+      "blockTitle": "Block this account?",
+      "blockText": "{name} won't be able to sign in and the current session ends. You can activate the account again later.",
+      "blockConfirm": "Block",
+      "deleteTitle": "Delete this user?",
+      "deleteText": "{name} will be permanently deleted. This can't be undone.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "{name} added",
+      "updated": "{name} updated",
+      "blocked": "{name} blocked",
+      "unblocked": "{name} activated",
+      "deleted": "{name} deleted"
+    },
+    "empty": {
+      "title": "No users",
+      "text": "Add the first user."
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "subtitle": {
+      "admin": "Tasks across the company.",
+      "manager": "Your team's tasks and those assigned to you.",
+      "employee": "Tasks assigned to you."
+    },
+    "caption": "Tasks table",
+    "add": "New task",
+    "aria": "{action}: {title}",
+    "overdue": "Overdue",
+    "returnedNote": "Returned: {note}",
+    "columns": {
+      "task": "Task",
+      "assignee": "Assignee",
+      "priority": "Priority",
+      "due": "Due",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "todo": "To do",
+      "in_progress": "In progress",
+      "review": "In review",
+      "done": "Done"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "filters": {
+      "status": "Status",
+      "all": "All"
+    },
+    "actions": {
+      "start": "Start",
+      "back": "Back",
+      "submit": "Submit for review",
+      "approve": "Approve",
+      "return": "Return",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "form": {
+      "createTitle": "New task",
+      "createDesc": "Choose an assignee and set a due date.",
+      "editTitle": "Edit task",
+      "editDesc": "Changes are visible to the assignee right away.",
+      "title": "Title",
+      "description": "Description",
+      "assignee": "Assignee",
+      "assigneePlaceholder": "Choose an assignee",
+      "priority": "Priority",
+      "due": "Due date",
+      "submitCreate": "Create",
+      "submitEdit": "Save"
+    },
+    "returnForm": {
+      "title": "Return task",
+      "desc": "“{title}” goes back to the assignee for rework.",
+      "note": "Reason for returning",
+      "submit": "Return"
+    },
+    "confirm": {
+      "deleteTitle": "Delete this task?",
+      "deleteText": "“{title}” will be permanently deleted.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "Task created",
+      "updated": "Task updated",
+      "moved": "Status: {status}",
+      "returned": "Task returned",
+      "deleted": "Task deleted"
+    },
+    "empty": {
+      "title": "No tasks",
+      "filtered": "No tasks with this status",
+      "text": {
+        "admin": "Create the first task.",
+        "manager": "Assign a task to your team.",
+        "employee": "No tasks are assigned to you yet."
+      }
+    }
+  },
+  "team": {
+    "title": "My team",
+    "subtitle": "Employees assigned to you and their workload. Only an admin can add employees.",
+    "caption": "Team table",
+    "columns": {
+      "member": "Employee",
+      "dept": "Department",
+      "open": "Active tasks",
+      "review": "In review",
+      "done": "Done",
+      "actions": "Actions"
+    },
+    "assign": "Assign task",
+    "assignAria": "Assign task to {name}",
+    "empty": {
+      "title": "No team members",
+      "text": "An admin assigns employees to you."
+    }
+  },
+  "approvals": {
+    "title": "Approvals",
+    "subtitle": "Work that employees have submitted for review.",
+    "caption": "Tasks awaiting approval",
+    "empty": {
+      "title": "Nothing to review",
+      "text": "Submitted work will show up here."
+    }
   }
 }
