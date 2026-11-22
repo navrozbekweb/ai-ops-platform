@@ -302,7 +302,7 @@
       "block": "Bloklash: {name}",
       "blockShort": "Bloklash",
       "unblock": "Blokdan chiqarish: {name}",
-      "unblockShort": "Faollashtirish",
+      "unblockShort": "Blokdan chiqarish",
       "delete": "O'chirish: {name}",
       "deleteShort": "O'chirish"
     },

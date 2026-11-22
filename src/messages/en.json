@@ -302,7 +302,7 @@
       "block": "Block {name}",
       "blockShort": "Block",
       "unblock": "Unblock {name}",
-      "unblockShort": "Activate",
+      "unblockShort": "Unblock",
       "delete": "Delete {name}",
       "deleteShort": "Delete"
     },

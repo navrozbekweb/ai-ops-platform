@@ -120,7 +120,7 @@ export function TaskActions({
   });
 
   return (
-    <div className="flex justify-end gap-1.5 whitespace-nowrap">
+    <div className="flex flex-wrap justify-end gap-1.5">
       {moves.map(({ key, next, primary }) => (
         <Button
           key={key}

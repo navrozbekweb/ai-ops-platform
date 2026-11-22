@@ -50,6 +50,7 @@ export function ApprovalsView({ tasks, today }: { tasks: TaskView[]; today: stri
       id: "actions",
       header: t("columns.actions"),
       hiddenHeader: true,
+      mobileInline: true,
       cell: (task) => (
         <TaskActions task={task} onAdvance={advance} onReturn={setReturning} />
       ),

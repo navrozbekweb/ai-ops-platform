@@ -25,12 +25,13 @@ export function ProfileMenu({
       triggerClassName="border-border hover:bg-surface-2 flex h-11 items-center gap-2 rounded-lg border pr-2 pl-1.5"
       trigger={
         <>
+          {/* Bosh harflar CSS orqali chiziladi: ular tugma nomining (aria-label) bir qismi emas, shuning uchun
+              matn DOM'ga kirmaydi va WCAG 2.5.3 (ko'rinadigan matn nomda bo'lishi) buzilmaydi. */}
           <span
             aria-hidden="true"
-            className="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-900 dark:bg-indigo-950 dark:text-indigo-200"
-          >
-            {initials(user.name)}
-          </span>
+            data-initials={initials(user.name)}
+            className="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-900 before:content-[attr(data-initials)] dark:bg-indigo-950 dark:text-indigo-200"
+          />
           <DownOutlined aria-hidden="true" className="text-muted text-[10px]" />
         </>
       }
