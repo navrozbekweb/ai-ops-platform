@@ -11,6 +11,8 @@ import {
   recordFailure,
   resetRateLimit,
 } from "@/lib/api/guard";
+import { findActor } from "@/lib/data/service";
+import { db } from "@/lib/data/store";
 import { isMockAuthEnabled, verifyCredentials } from "@/lib/mock/users";
 
 const MAX_ATTEMPTS = 5;
@@ -43,14 +45,21 @@ export async function POST(request: NextRequest) {
     return jsonError("invalid", 401);
   }
 
+  // Rol, ism va bo'lim ombordan olinadi (admin o'zgartirgan bo'lishi mumkin).
+  const person = findActor(user.id);
+  if (!person) {
+    const exists = db().people.some((p) => p.id === user.id);
+    return jsonError(exists ? "blocked" : "invalid", exists ? 403 : 401);
+  }
+
   resetRateLimit(accountKey);
   await createSession({
-    sub: user.id,
-    role: user.role,
-    name: user.name,
-    email: user.email,
-    dept: user.dept,
+    sub: person.id,
+    role: person.role,
+    name: person.name,
+    email: person.email,
+    dept: person.dept,
   });
 
-  return jsonOk({ role: user.role, redirectTo: `/${locale}/${HOME_SECTION}` });
+  return jsonOk({ role: person.role, redirectTo: `/${locale}/${HOME_SECTION}` });
 }

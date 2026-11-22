@@ -13,12 +13,12 @@ export function Breadcrumbs() {
 
   return (
     <nav aria-label={t("shell.breadcrumb")} className="min-w-0">
-      <ol className="flex items-center gap-2 text-sm">
-        <li className="min-w-0">
+      <ol className="flex min-w-0 items-center gap-2 text-sm">
+        <li className={`min-w-0 ${current ? "hidden sm:block" : ""}`}>
           {current ? (
             <Link
               href={`/${HOME_SECTION}`}
-              className="text-muted hover:text-text truncate underline-offset-2 hover:underline"
+              className="text-muted hover:text-text block truncate underline-offset-2 hover:underline"
             >
               {t(`nav.${HOME_SECTION}`)}
             </Link>
@@ -30,7 +30,7 @@ export function Breadcrumbs() {
         </li>
         {current ? (
           <>
-            <li aria-hidden="true" className="text-muted">
+            <li aria-hidden="true" className="text-muted hidden sm:block">
               /
             </li>
             <li className="min-w-0">

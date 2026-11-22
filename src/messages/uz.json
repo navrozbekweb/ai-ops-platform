@@ -55,7 +55,8 @@
         "invalid": "Email yoki parol noto'g'ri.",
         "rateLimited": "Juda ko'p urinish. Bir necha daqiqadan keyin qayta urinib ko'ring.",
         "disabled": "Demo kirish hozircha o'chirilgan.",
-        "generic": "Xatolik yuz berdi. Qayta urinib ko'ring."
+        "generic": "Xatolik yuz berdi. Qayta urinib ko'ring.",
+        "blocked": "Hisob bloklangan. Administrator bilan bog'laning."
       }
     },
     "forgot": {
@@ -221,5 +222,239 @@
       "retry": "Qayta urinish"
     },
     "loading": "Yuklanmoqda"
+  },
+  "ui": {
+    "close": "Yopish",
+    "cancel": "Bekor qilish",
+    "genericError": "Xatolik yuz berdi. Qayta urinib ko'ring."
+  },
+  "table": {
+    "search": "Qidirish",
+    "noResults": "Hech narsa topilmadi",
+    "noResultsText": "Qidiruv so'zini o'zgartirib ko'ring.",
+    "clear": "Qidiruvni tozalash",
+    "perPage": "Sahifada",
+    "range": "{from}–{to} / {total}",
+    "prev": "Oldingi sahifa",
+    "next": "Keyingi sahifa",
+    "resultsCount": "{count} ta natija"
+  },
+  "forms": {
+    "validation": {
+      "nameRequired": "Ismni kiriting (kamida 2 belgi)",
+      "nameTooLong": "Ism juda uzun",
+      "emailRequired": "Emailni kiriting",
+      "emailInvalid": "Email noto'g'ri",
+      "emailTaken": "Bu email allaqachon ro'yxatda",
+      "roleRequired": "Rolni tanlang",
+      "deptRequired": "Bo'limni kiriting",
+      "deptTooLong": "Bo'lim nomi juda uzun",
+      "titleRequired": "Sarlavhani kiriting (kamida 3 belgi)",
+      "titleTooLong": "Sarlavha juda uzun (120 belgigacha)",
+      "descriptionTooLong": "Tavsif juda uzun (600 belgigacha)",
+      "assigneeRequired": "Ijrochini tanlang",
+      "priorityRequired": "Muhimlikni tanlang",
+      "dueInvalid": "Muddatni to'g'ri kiriting",
+      "noteRequired": "Sababni yozing (kamida 3 belgi)",
+      "noteTooLong": "Izoh juda uzun (300 belgigacha)"
+    }
+  },
+  "apiErrors": {
+    "unauthorized": "Sessiya tugagan. Qayta kiring.",
+    "forbidden": "Bu amal uchun ruxsatingiz yo'q.",
+    "notFound": "Topilmadi. Ehtimol, boshqa foydalanuvchi o'chirgan.",
+    "emailTaken": "Bu email allaqachon ro'yxatda.",
+    "selfAction": "O'zingiz bilan bu amalni bajarib bo'lmaydi.",
+    "lastAdmin": "Oxirgi faol adminni o'zgartirib yoki o'chirib bo'lmaydi.",
+    "hasOpenTasks": "Foydalanuvchida yakunlanmagan vazifalar bor. Avval ularni boshqa xodimga o'tkazing yoki o'chiring.",
+    "invalidAssignee": "Bu ijrochiga vazifa tayinlay olmaysiz.",
+    "invalidManager": "Rahbar noto'g'ri tanlangan.",
+    "invalidTransition": "Vazifani bu holatga o'tkazib bo'lmaydi.",
+    "noteRequired": "Qaytarish sababini yozing.",
+    "validation": "Kiritilgan ma'lumot noto'g'ri.",
+    "empty": "O'zgartirish uchun hech narsa berilmagan.",
+    "generic": "Xatolik yuz berdi. Qayta urinib ko'ring."
+  },
+  "users": {
+    "title": "Foydalanuvchilar",
+    "subtitle": "Xodimlarni qo'shish, rollarni o'zgartirish va hisobni bloklash. Faqat admin uchun.",
+    "caption": "Foydalanuvchilar jadvali",
+    "add": "Foydalanuvchi qo'shish",
+    "columns": {
+      "name": "Foydalanuvchi",
+      "role": "Rol",
+      "dept": "Bo'lim",
+      "manager": "Rahbar",
+      "status": "Holat",
+      "actions": "Amallar"
+    },
+    "status": {
+      "active": "Faol",
+      "blocked": "Bloklangan"
+    },
+    "filters": {
+      "role": "Rol",
+      "all": "Hammasi"
+    },
+    "actions": {
+      "edit": "Tahrirlash: {name}",
+      "editShort": "Tahrirlash",
+      "block": "Bloklash: {name}",
+      "blockShort": "Bloklash",
+      "unblock": "Blokdan chiqarish: {name}",
+      "unblockShort": "Faollashtirish",
+      "delete": "O'chirish: {name}",
+      "deleteShort": "O'chirish"
+    },
+    "form": {
+      "createTitle": "Yangi foydalanuvchi",
+      "createDesc": "Ma'lumotlarni kiriting. Foydalanuvchi taklif sifatida ro'yxatga qo'shiladi.",
+      "editTitle": "Foydalanuvchini tahrirlash",
+      "editDesc": "Rol o'zgarsa, huquqlar darhol o'zgaradi.",
+      "name": "To'liq ism",
+      "email": "Email",
+      "emailLocked": "Email hisob identifikatori, uni o'zgartirib bo'lmaydi.",
+      "inviteNote": "Parolni foydalanuvchi o'zi belgilaydi (mock rejimda faqat demo hisoblar kira oladi).",
+      "role": "Rol",
+      "dept": "Bo'lim",
+      "manager": "Rahbar",
+      "managerNone": "Rahbarsiz",
+      "managerHint": "Rahbar shu xodimga vazifa tayinlaydi va ishini tasdiqlaydi.",
+      "submitCreate": "Qo'shish",
+      "submitEdit": "Saqlash"
+    },
+    "confirm": {
+      "blockTitle": "Hisobni bloklaymizmi?",
+      "blockText": "{name} tizimga kira olmaydi va joriy sessiyasi tugaydi. Keyin qayta faollashtirish mumkin.",
+      "blockConfirm": "Bloklash",
+      "deleteTitle": "Foydalanuvchini o'chiramizmi?",
+      "deleteText": "{name} butunlay o'chiriladi. Bu amalni qaytarib bo'lmaydi.",
+      "deleteConfirm": "O'chirish"
+    },
+    "toast": {
+      "created": "{name} qo'shildi",
+      "updated": "{name} yangilandi",
+      "blocked": "{name} bloklandi",
+      "unblocked": "{name} faollashtirildi",
+      "deleted": "{name} o'chirildi"
+    },
+    "empty": {
+      "title": "Foydalanuvchilar yo'q",
+      "text": "Birinchi foydalanuvchini qo'shing."
+    }
+  },
+  "tasks": {
+    "title": "Vazifalar",
+    "subtitle": {
+      "admin": "Butun korxona vazifalari.",
+      "manager": "Jamoangiz vazifalari va o'zingizga berilganlar.",
+      "employee": "Sizga tayinlangan vazifalar."
+    },
+    "caption": "Vazifalar jadvali",
+    "add": "Yangi vazifa",
+    "aria": "{action}: {title}",
+    "overdue": "Muddati o'tgan",
+    "returnedNote": "Qaytarildi: {note}",
+    "columns": {
+      "task": "Vazifa",
+      "assignee": "Ijrochi",
+      "priority": "Muhimlik",
+      "due": "Muddat",
+      "status": "Holat",
+      "actions": "Amallar"
+    },
+    "status": {
+      "todo": "Kutilmoqda",
+      "in_progress": "Jarayonda",
+      "review": "Tekshiruvda",
+      "done": "Bajarildi"
+    },
+    "priority": {
+      "low": "Past",
+      "medium": "O'rta",
+      "high": "Yuqori"
+    },
+    "filters": {
+      "status": "Holat",
+      "all": "Hammasi"
+    },
+    "actions": {
+      "start": "Boshlash",
+      "back": "Orqaga",
+      "submit": "Tekshiruvga yuborish",
+      "approve": "Tasdiqlash",
+      "return": "Qaytarish",
+      "edit": "Tahrirlash",
+      "delete": "O'chirish"
+    },
+    "form": {
+      "createTitle": "Yangi vazifa",
+      "createDesc": "Ijrochini tanlang va muddatni belgilang.",
+      "editTitle": "Vazifani tahrirlash",
+      "editDesc": "O'zgarishlar ijrochiga darhol ko'rinadi.",
+      "title": "Sarlavha",
+      "description": "Tavsif",
+      "assignee": "Ijrochi",
+      "assigneePlaceholder": "Ijrochini tanlang",
+      "priority": "Muhimlik",
+      "due": "Muddat",
+      "submitCreate": "Yaratish",
+      "submitEdit": "Saqlash"
+    },
+    "returnForm": {
+      "title": "Vazifani qaytarish",
+      "desc": "«{title}» ijrochiga qayta ishlash uchun qaytariladi.",
+      "note": "Qaytarish sababi",
+      "submit": "Qaytarish"
+    },
+    "confirm": {
+      "deleteTitle": "Vazifani o'chiramizmi?",
+      "deleteText": "«{title}» butunlay o'chiriladi.",
+      "deleteConfirm": "O'chirish"
+    },
+    "toast": {
+      "created": "Vazifa yaratildi",
+      "updated": "Vazifa yangilandi",
+      "moved": "Holat: {status}",
+      "returned": "Vazifa qaytarildi",
+      "deleted": "Vazifa o'chirildi"
+    },
+    "empty": {
+      "title": "Vazifalar yo'q",
+      "filtered": "Bu holatda vazifalar yo'q",
+      "text": {
+        "admin": "Birinchi vazifani yarating.",
+        "manager": "Jamoangizga vazifa tayinlang.",
+        "employee": "Hozircha sizga vazifa tayinlanmagan."
+      }
+    }
+  },
+  "team": {
+    "title": "Mening jamoam",
+    "subtitle": "Sizga biriktirilgan xodimlar va ularning yuklamasi. Xodim qo'shish faqat admin huquqida.",
+    "caption": "Jamoa jadvali",
+    "columns": {
+      "member": "Xodim",
+      "dept": "Bo'lim",
+      "open": "Faol vazifalar",
+      "review": "Tekshiruvda",
+      "done": "Bajarilgan",
+      "actions": "Amallar"
+    },
+    "assign": "Vazifa tayinlash",
+    "assignAria": "Vazifa tayinlash: {name}",
+    "empty": {
+      "title": "Jamoada xodimlar yo'q",
+      "text": "Xodimlarni admin sizga biriktiradi."
+    }
+  },
+  "approvals": {
+    "title": "Tasdiqlash",
+    "subtitle": "Xodimlar tekshiruvga topshirgan ishlar.",
+    "caption": "Tasdiq kutayotgan vazifalar",
+    "empty": {
+      "title": "Tasdiq kutayotgan ish yo'q",
+      "text": "Xodimlar ishni topshirganda shu yerda paydo bo'ladi."
+    }
   }
 }

@@ -1,8 +1,7 @@
 import { cookies } from "next/headers";
 import { setRequestLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
 import { AppShell } from "@/components/layout/AppShell";
-import { getSession } from "@/lib/auth/session";
+import { requirePageActor } from "@/lib/auth/actor-page";
 import { SIDEBAR_COOKIE, parseSidebarState } from "@/lib/layout";
 
 export default async function AppLayout({
@@ -16,9 +15,7 @@ export default async function AppLayout({
   setRequestLocale(locale);
 
   // Proxy asosiy himoya, bu esa ikkinchi qatlam: sessiyasiz hech narsa render qilinmaydi.
-  const session = await getSession();
-  if (!session) redirect({ href: "/login", locale });
-  const user = session!;
+  const user = await requirePageActor(locale);
 
   const initialSidebar = parseSidebarState((await cookies()).get(SIDEBAR_COOKIE)?.value);
 
