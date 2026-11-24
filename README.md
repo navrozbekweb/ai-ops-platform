@@ -83,7 +83,7 @@ Rol login formasida tanlanmaydi, email va paroldan avtomatik aniqlanadi.
 | Rahbar | `manager@aiops.uz`  | `Manager#2026`  |
 | Xodim  | `employee@aiops.uz` | `Employee#2026` |
 
-Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlaydi va login sahifasida demo hisoblar ro'yxati ko'rinadi. **Ochiq internetga chiqariladigan muhitda buni o'chiring.**
+Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlaydi Login sahifasidagi demo hisoblar ro'yxati sukut bo'yicha yashirin; ko'rsatish uchun `SHOW_DEMO_ACCOUNTS=true` qo'ying (hisoblar pastdagi jadvalda). **Ochiq internetga chiqariladigan muhitda buni o'chiring.**
 
 ## Rollar
 
