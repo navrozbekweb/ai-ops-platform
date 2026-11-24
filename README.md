@@ -76,17 +76,6 @@ reports/                        # Skrinshotlar bilan batafsil hisobotlar
 
    Brauzerda `http://localhost:3000` ochiladi va `/uz/login` ga yo'naltiradi.
 
-## Demo hisoblar (mock)
-
-Rol login formasida tanlanmaydi, email va paroldan avtomatik aniqlanadi.
-
-| Rol    | Email               | Parol           |
-| ------ | ------------------- | --------------- |
-| Admin  | `admin@aiops.uz`    | `Admin#2026`    |
-| Rahbar | `manager@aiops.uz`  | `Manager#2026`  |
-| Xodim  | `employee@aiops.uz` | `Employee#2026` |
-
-Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlaydi va login sahifasida demo hisoblar ro'yxati ko'rinadi. **Ochiq internetga chiqariladigan muhitda buni o'chiring.**
 
 ## Rollar
 
