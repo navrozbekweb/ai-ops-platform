@@ -9,8 +9,6 @@ Korxona rahbari va xodimlari uchun AI biznes operatsion platformasi: rolga qarab
 - [Hafta 3 hisobi](./docs/weekly/hafta-3.md)
 - [Hafta 4 hisobi](./docs/weekly/hafta-4.md)
 
-Skrinshotlar bilan batafsil hisobotlar: [`reports/`](./reports).
-
 ## Loyiha tuzilmasi
 
 ```
@@ -40,7 +38,6 @@ src/
 e2e/                            # Playwright testlari (kirish, navigatsiya, API, axe, responsive)
 scripts/                        # check-i18n.mjs (tarjimalar to'liqligi)
 docs/weekly/                    # Haftalik hisobotlar
-reports/                        # Skrinshotlar bilan batafsil hisobotlar
 ```
 
 ## Ishni boshlash

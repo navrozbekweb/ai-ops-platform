@@ -27,5 +27,3 @@
 - Loyiha ichidagi rasmiy hujjatdan topdim: Next.js 16 da `retry` prop'i keladi, shunga ko'ra yozdim.
 - Render-prop'ni alohida `Slot` komponentida chaqirdim, `close` unga oddiy prop sifatida keladi.
 - Locator'ni aniq nom (`exact: true`) bilan tuzatdim.
-
-Batafsil hisobot (skrinshotlar bilan): [`reports/week-2.md`](../../reports/week-2.md)
