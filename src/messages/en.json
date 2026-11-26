@@ -284,7 +284,8 @@
     "generic": "Something went wrong. Please try again.",
     "wrongPassword": "The current password is incorrect.",
     "aiDisabled": "The AI assistant has been turned off by an administrator.",
-    "rate_limited": "Too many attempts. Please try again shortly."
+    "rate_limited": "Too many attempts. Please try again shortly.",
+    "aiUnavailable": "The AI service is not responding right now. Please try again shortly."
   },
   "users": {
     "title": "Users",
@@ -588,7 +589,8 @@
       "docs": "Documents visible to you: {count}.",
       "team": "Your team has {count} active members.",
       "fallback": "I didn't understand that yet. Try asking about tasks, overdue work, documents or approvals."
-    }
+    },
+    "subtitleLive": "Ask about tasks, documents and your team. The AI model answers only from data you are allowed to see."
   },
   "analytics": {
     "title": "Company analytics",

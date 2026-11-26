@@ -284,7 +284,8 @@
     "generic": "Xatolik yuz berdi. Qayta urinib ko'ring.",
     "wrongPassword": "Joriy parol noto'g'ri.",
     "aiDisabled": "AI yordamchi administrator tomonidan o'chirilgan.",
-    "rate_limited": "Juda ko'p urinish. Birozdan keyin qayta urinib ko'ring."
+    "rate_limited": "Juda ko'p urinish. Birozdan keyin qayta urinib ko'ring.",
+    "aiUnavailable": "AI xizmati hozir javob bermayapti. Birozdan keyin qayta urinib ko'ring."
   },
   "users": {
     "title": "Foydalanuvchilar",
@@ -588,7 +589,8 @@
       "docs": "Sizga ko'rinadigan hujjatlar soni: {count} ta.",
       "team": "Jamoangizda {count} nafar faol xodim bor.",
       "fallback": "Buni hali tushunmadim. Vazifalar, kechikishlar, hujjatlar yoki tasdiqlar haqida so'rab ko'ring."
-    }
+    },
+    "subtitleLive": "Vazifalar, hujjatlar va jamoa haqida so'rang. Javoblar AI modeli tomonidan faqat sizga ko'rinadigan ma'lumotlar asosida beriladi."
   },
   "analytics": {
     "title": "Korxona tahlili",

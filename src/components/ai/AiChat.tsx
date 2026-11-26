@@ -42,9 +42,17 @@ export function AiChat() {
     setDraft("");
     setBusy(true);
     try {
+      // Haqiqiy AI uchun oldingi suhbat: salomlashuv va xatolarsiz, oxirgi 8 ta xabar.
+      const history = messages
+        .filter((m) => m.id !== 0 && m.from !== "error")
+        .slice(-8)
+        .map((m) => ({
+          role: m.from === "user" ? ("user" as const) : ("assistant" as const),
+          text: m.text.slice(0, 500),
+        }));
       const data = await api<{ reply: string }>("/api/ai/chat", {
         method: "POST",
-        body: { message, locale },
+        body: { message, locale, history },
       });
       push("assistant", data.reply);
     } catch (error) {
