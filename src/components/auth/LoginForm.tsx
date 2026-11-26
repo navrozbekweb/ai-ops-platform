@@ -26,7 +26,9 @@ export function LoginForm({ demoAccounts }: { demoAccounts: DemoAccount[] | null
   const router = useRouter();
   const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const [serverError, setServerError] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(
+    searchParams.get("reason") === "blocked" ? t("login.errors.blocked") : null,
+  );
 
   const {
     register,
@@ -60,6 +62,7 @@ export function LoginForm({ demoAccounts }: { demoAccounts: DemoAccount[] | null
         return;
       }
       if (response.status === 401) setServerError(t("login.errors.invalid"));
+      else if (response.status === 403) setServerError(t("login.errors.blocked"));
       else if (response.status === 429) setServerError(t("login.errors.rateLimited"));
       else if (response.status === 503) setServerError(t("login.errors.disabled"));
       else setServerError(t("login.errors.generic"));

@@ -95,3 +95,27 @@ export function rateLimit(key: string, max: number, windowMs: number) {
 export function resetRateLimit(key: string) {
   buckets.delete(key);
 }
+
+/**
+ * Faqat MUVAFFAQIYATSIZ urinishlarni sanaydigan limit (login uchun).
+ * Muvaffaqiyatli kirishlar sanalmaydi: bitta ofis (bitta IP) xodimlari bir vaqtda kirsa,
+ * hech kim bloklanmasligi kerak.
+ */
+export function checkFailureLimit(key: string, max: number) {
+  const bucket = buckets.get(key);
+  const now = Date.now();
+  if (!bucket || bucket.resetAt <= now || bucket.count < max) {
+    return { limited: false, retryAfter: 0 };
+  }
+  return { limited: true, retryAfter: Math.ceil((bucket.resetAt - now) / 1000) };
+}
+
+export function recordFailure(key: string, windowMs: number) {
+  const now = Date.now();
+  const bucket = buckets.get(key);
+  if (!bucket || bucket.resetAt <= now) {
+    buckets.set(key, { count: 1, resetAt: now + windowMs });
+  } else {
+    bucket.count += 1;
+  }
+}

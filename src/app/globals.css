@@ -49,6 +49,9 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
   --color-sidebar: var(--sidebar);
   --color-sidebar-active: var(--sidebar-active);
   --color-sidebar-text: var(--sidebar-text);

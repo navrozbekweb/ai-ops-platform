@@ -55,7 +55,8 @@
         "invalid": "Incorrect email or password.",
         "rateLimited": "Too many attempts. Please try again in a few minutes.",
         "disabled": "Demo sign-in is currently turned off.",
-        "generic": "Something went wrong. Please try again."
+        "generic": "Something went wrong. Please try again.",
+        "blocked": "This account is blocked. Contact an administrator."
       }
     },
     "forgot": {
@@ -134,5 +135,536 @@
   "placeholder": {
     "text": "This section will be added in the coming weeks. Role-based sign-in and menus work now.",
     "access": "This page is available to your role."
+  },
+  "navGroups": {
+    "overview": "Overview",
+    "work": "Work",
+    "administration": "Administration"
+  },
+  "shell": {
+    "skip": "Skip to main content",
+    "mainNav": "Main menu",
+    "collapse": "Collapse menu",
+    "expand": "Expand menu",
+    "breadcrumb": "Current path",
+    "search": "Search",
+    "account": "Account menu",
+    "profile": "Profile",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "palette": {
+    "title": "Quick search",
+    "placeholder": "Search for a section or action",
+    "empty": "Nothing found",
+    "pages": "Pages",
+    "actions": "Actions",
+    "hint": "Select: up/down, open: Enter, close: Esc",
+    "actionLight": "Switch to light theme",
+    "actionDark": "Switch to dark theme",
+    "actionSystem": "Use system theme",
+    "actionLogout": "Log out"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "label": "Notifications, unread: {count}",
+    "empty": "No new notifications",
+    "markAll": "Mark all as read",
+    "unread": "Unread",
+    "items": {
+      "roleChange": {
+        "title": "Manager role changed",
+        "body": "Permissions for the Finance manager were updated."
+      },
+      "passwordReset": {
+        "title": "Password reset request",
+        "body": "An employee requested a password reset."
+      },
+      "newUser": {
+        "title": "New employee added",
+        "body": "A new employee was assigned to Sales."
+      },
+      "approvalWaiting": {
+        "title": "Awaiting approval",
+        "body": "The monthly report draft is waiting for your decision."
+      },
+      "taskLate": {
+        "title": "Task overdue",
+        "body": "The supplier contract deadline has passed."
+      },
+      "reportReady": {
+        "title": "Report ready",
+        "body": "The weekly performance report has been generated."
+      },
+      "taskAssigned": {
+        "title": "New task",
+        "body": "You were assigned to update the customer database."
+      },
+      "deadlineSoon": {
+        "title": "Deadline approaching",
+        "body": "The weekly sales report is due today."
+      },
+      "approved": {
+        "title": "Work approved",
+        "body": "The proposal template was approved by your manager."
+      }
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page not found",
+      "text": "The page you are looking for does not exist or has moved.",
+      "back": "Back to dashboard"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "text": "The page could not be loaded. Please try again.",
+      "retry": "Try again"
+    },
+    "loading": "Loading"
+  },
+  "ui": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "table": {
+    "search": "Search",
+    "noResults": "Nothing found",
+    "noResultsText": "Try a different search term.",
+    "clear": "Clear search",
+    "perPage": "Per page",
+    "range": "{from}–{to} / {total}",
+    "prev": "Previous page",
+    "next": "Next page",
+    "resultsCount": "{count, plural, one {# result} other {# results}}"
+  },
+  "forms": {
+    "validation": {
+      "nameRequired": "Enter a name (at least 2 characters)",
+      "nameTooLong": "Name is too long",
+      "emailRequired": "Enter an email",
+      "emailInvalid": "Email is not valid",
+      "emailTaken": "This email is already registered",
+      "roleRequired": "Choose a role",
+      "deptRequired": "Enter a department",
+      "deptTooLong": "Department name is too long",
+      "titleRequired": "Enter a title (at least 3 characters)",
+      "titleTooLong": "Title is too long (up to 120 characters)",
+      "descriptionTooLong": "Description is too long (up to 600 characters)",
+      "assigneeRequired": "Choose an assignee",
+      "priorityRequired": "Choose a priority",
+      "dueInvalid": "Enter a valid due date",
+      "noteRequired": "Enter a reason (at least 3 characters)",
+      "noteTooLong": "Note is too long (up to 300 characters)",
+      "currentRequired": "Enter your current password",
+      "passwordWeak": "At least 8 characters with upper, lower case and a digit",
+      "passwordMismatch": "Passwords do not match",
+      "categoryRequired": "Choose a type",
+      "companyRequired": "Enter a company name (at least 2 characters)",
+      "companyTooLong": "Name is too long (up to 80 characters)",
+      "messageRequired": "Type your question",
+      "messageTooLong": "Question is too long (up to 500 characters)"
+    }
+  },
+  "apiErrors": {
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You don't have permission for this action.",
+    "notFound": "Not found. Someone else may have removed it.",
+    "emailTaken": "This email is already registered.",
+    "selfAction": "You can't do this to your own account.",
+    "lastAdmin": "The last active admin can't be changed or removed.",
+    "hasOpenTasks": "This user has unfinished tasks. Reassign or delete them first.",
+    "invalidAssignee": "You can't assign a task to this person.",
+    "invalidManager": "The manager is not valid.",
+    "invalidTransition": "The task can't be moved to this status.",
+    "noteRequired": "Enter the reason for returning it.",
+    "validation": "The data you entered is not valid.",
+    "empty": "There is nothing to change.",
+    "generic": "Something went wrong. Please try again.",
+    "wrongPassword": "The current password is incorrect.",
+    "aiDisabled": "The AI assistant has been turned off by an administrator.",
+    "rate_limited": "Too many attempts. Please try again shortly."
+  },
+  "users": {
+    "title": "Users",
+    "subtitle": "Add employees, change roles and block accounts. Admin only.",
+    "caption": "Users table",
+    "add": "Add user",
+    "columns": {
+      "name": "User",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "blocked": "Blocked"
+    },
+    "filters": {
+      "role": "Role",
+      "all": "All"
+    },
+    "actions": {
+      "edit": "Edit {name}",
+      "editShort": "Edit",
+      "block": "Block {name}",
+      "blockShort": "Block",
+      "unblock": "Unblock {name}",
+      "unblockShort": "Unblock",
+      "delete": "Delete {name}",
+      "deleteShort": "Delete"
+    },
+    "form": {
+      "createTitle": "New user",
+      "createDesc": "Enter the details. The user is added as invited.",
+      "editTitle": "Edit user",
+      "editDesc": "If the role changes, permissions change immediately.",
+      "name": "Full name",
+      "email": "Email",
+      "emailLocked": "Email identifies the account and can't be changed.",
+      "inviteNote": "The user sets their own password (in mock mode only the demo accounts can sign in).",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "managerNone": "No manager",
+      "managerHint": "The manager assigns tasks to this employee and approves their work.",
+      "submitCreate": "Add",
+      "submitEdit": "Save"
+    },
+    "confirm": {
+      "blockTitle": "Block this account?",
+      "blockText": "{name} won't be able to sign in and the current session ends. You can activate the account again later.",
+      "blockConfirm": "Block",
+      "deleteTitle": "Delete this user?",
+      "deleteText": "{name} will be permanently deleted. This can't be undone.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "{name} added",
+      "updated": "{name} updated",
+      "blocked": "{name} blocked",
+      "unblocked": "{name} activated",
+      "deleted": "{name} deleted"
+    },
+    "empty": {
+      "title": "No users",
+      "text": "Add the first user."
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "subtitle": {
+      "admin": "Tasks across the company.",
+      "manager": "Your team's tasks and those assigned to you.",
+      "employee": "Tasks assigned to you."
+    },
+    "caption": "Tasks table",
+    "add": "New task",
+    "aria": "{action}: {title}",
+    "overdue": "Overdue",
+    "returnedNote": "Returned: {note}",
+    "columns": {
+      "task": "Task",
+      "assignee": "Assignee",
+      "priority": "Priority",
+      "due": "Due",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "todo": "To do",
+      "in_progress": "In progress",
+      "review": "In review",
+      "done": "Done"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "filters": {
+      "status": "Status",
+      "all": "All"
+    },
+    "actions": {
+      "start": "Start",
+      "back": "Back",
+      "submit": "Submit for review",
+      "approve": "Approve",
+      "return": "Return",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "form": {
+      "createTitle": "New task",
+      "createDesc": "Choose an assignee and set a due date.",
+      "editTitle": "Edit task",
+      "editDesc": "Changes are visible to the assignee right away.",
+      "title": "Title",
+      "description": "Description",
+      "assignee": "Assignee",
+      "assigneePlaceholder": "Choose an assignee",
+      "priority": "Priority",
+      "due": "Due date",
+      "submitCreate": "Create",
+      "submitEdit": "Save"
+    },
+    "returnForm": {
+      "title": "Return task",
+      "desc": "“{title}” goes back to the assignee for rework.",
+      "note": "Reason for returning",
+      "submit": "Return"
+    },
+    "confirm": {
+      "deleteTitle": "Delete this task?",
+      "deleteText": "“{title}” will be permanently deleted.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "Task created",
+      "updated": "Task updated",
+      "moved": "Status: {status}",
+      "returned": "Task returned",
+      "deleted": "Task deleted"
+    },
+    "empty": {
+      "title": "No tasks",
+      "filtered": "No tasks with this status",
+      "text": {
+        "admin": "Create the first task.",
+        "manager": "Assign a task to your team.",
+        "employee": "No tasks are assigned to you yet."
+      }
+    }
+  },
+  "team": {
+    "title": "My team",
+    "subtitle": "Employees assigned to you and their workload. Only an admin can add employees.",
+    "caption": "Team table",
+    "columns": {
+      "member": "Employee",
+      "dept": "Department",
+      "open": "Active tasks",
+      "review": "In review",
+      "done": "Done",
+      "actions": "Actions"
+    },
+    "assign": "Assign task",
+    "assignAria": "Assign task to {name}",
+    "empty": {
+      "title": "No team members",
+      "text": "An admin assigns employees to you."
+    }
+  },
+  "approvals": {
+    "title": "Approvals",
+    "subtitle": "Work that employees have submitted for review.",
+    "caption": "Tasks awaiting approval",
+    "empty": {
+      "title": "Nothing to review",
+      "text": "Submitted work will show up here."
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Personal details and security.",
+    "details": {
+      "title": "Personal details",
+      "name": "Full name",
+      "email": "Email",
+      "emailLocked": "Email identifies the account and can't be changed.",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "save": "Save",
+      "saved": "Profile updated"
+    },
+    "password": {
+      "title": "Change password",
+      "desc": "For security, enter your current password first.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Repeat new password",
+      "hint": "At least 8 characters with upper and lower case letters and a digit.",
+      "submit": "Update password",
+      "success": "Password updated"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": {
+      "admin": "Documents across the company.",
+      "manager": "Your, your team's and shared documents.",
+      "employee": "Your and shared documents."
+    },
+    "caption": "Documents table",
+    "add": "Add document",
+    "columns": {
+      "title": "Document",
+      "category": "Type",
+      "owner": "Author",
+      "updated": "Updated",
+      "access": "Access",
+      "actions": "Actions"
+    },
+    "category": {
+      "contract": "Contract",
+      "report": "Report",
+      "policy": "Policy",
+      "other": "Other"
+    },
+    "filters": {
+      "category": "Type",
+      "all": "All"
+    },
+    "access": {
+      "shared": "Shared",
+      "private": "Private"
+    },
+    "delete": "Delete",
+    "deleteAria": "Delete: {title}",
+    "form": {
+      "createTitle": "New document",
+      "createDesc": "Enter the document details. File upload will come in a later stage.",
+      "title": "Title",
+      "category": "Type",
+      "description": "Description",
+      "shared": "Visible to all employees",
+      "sharedHint": "If unchecked, only you, your manager and an administrator can see it.",
+      "submit": "Add"
+    },
+    "confirm": {
+      "deleteTitle": "Delete this document?",
+      "deleteText": "“{title}” will be permanently deleted.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "Document added",
+      "deleted": "Document deleted"
+    },
+    "empty": {
+      "title": "No documents",
+      "text": "Add the first document."
+    }
+  },
+  "ai": {
+    "title": "AI assistant",
+    "subtitle": "Ask about tasks, documents and your team. This is a demo mode: answers are built from your own data.",
+    "disabled": {
+      "title": "AI assistant is turned off",
+      "text": "An administrator can turn it on in System settings."
+    },
+    "log": "Conversation",
+    "you": "You",
+    "assistant": "Assistant",
+    "welcome": "Hello! I can help with tasks, documents and approvals. Pick a question below or type your own.",
+    "inputLabel": "Your question",
+    "placeholder": "For example: which of my tasks are overdue?",
+    "send": "Send",
+    "thinking": "The assistant is typing...",
+    "suggestionsLabel": "Quick questions",
+    "suggestions": {
+      "tasks": "My tasks",
+      "late": "Overdue tasks",
+      "docs": "My documents",
+      "help": "What can you help with?"
+    },
+    "suggestionTexts": {
+      "tasks": "How are my tasks doing?",
+      "late": "Which tasks are overdue?",
+      "docs": "How many documents do I have?",
+      "help": "What can you help with?"
+    },
+    "replies": {
+      "greeting": "Hello, {name}! How can I help today?",
+      "help": "I can tell you about your tasks, overdue work, documents and items waiting for approval.",
+      "tasks": "You have {open} active tasks. Among the tasks visible to you, {late} are overdue.",
+      "late": "Overdue tasks: {count}. The main ones: {list}.",
+      "noLate": "No overdue tasks. Great!",
+      "approvals": "Items waiting for your approval: {count}.",
+      "docs": "Documents visible to you: {count}.",
+      "team": "Your team has {count} active members.",
+      "fallback": "I didn't understand that yet. Try asking about tasks, overdue work, documents or approvals."
+    }
+  },
+  "analytics": {
+    "title": "Company analytics",
+    "subtitle": "Task metrics across the whole company. Read only.",
+    "kpi": {
+      "total": "Total tasks",
+      "open": "Active",
+      "done": "Completed",
+      "late": "Overdue",
+      "rate": "Completion"
+    },
+    "byStatus": "By status",
+    "byDept": "By department",
+    "byPerson": "Workload by person",
+    "legendOpen": "Active",
+    "legendDone": "Completed",
+    "caption": "Tasks by employee",
+    "columns": {
+      "name": "Employee",
+      "open": "Active",
+      "done": "Completed",
+      "late": "Overdue"
+    },
+    "empty": "No data yet"
+  },
+  "audit": {
+    "title": "Audit log",
+    "subtitle": "History of important actions in the system. Admin only.",
+    "caption": "Audit log",
+    "columns": {
+      "time": "Time",
+      "actor": "Who",
+      "action": "Action",
+      "target": "Subject"
+    },
+    "filters": {
+      "action": "Action",
+      "all": "All"
+    },
+    "actions": {
+      "user_create": "Added a user",
+      "user_update": "Changed a user",
+      "user_delete": "Deleted a user",
+      "task_create": "Created a task",
+      "task_update": "Updated a task",
+      "task_delete": "Deleted a task",
+      "doc_create": "Added a document",
+      "doc_delete": "Deleted a document",
+      "settings_update": "Changed settings",
+      "profile_update": "Updated a profile",
+      "password_change": "Changed a password"
+    },
+    "empty": {
+      "title": "No entries",
+      "text": "Actions will appear here once they happen."
+    }
+  },
+  "settings": {
+    "title": "System settings",
+    "subtitle": "General settings. Admin only.",
+    "company": "Company name",
+    "companyHint": "Shown in reports and messages.",
+    "aiEnabled": "Turn on the AI assistant",
+    "aiHint": "When off, employees can't use the AI assistant.",
+    "emailNotifications": "Email notifications",
+    "emailHint": "Send notifications about tasks and approvals (demo for now).",
+    "save": "Save",
+    "saved": "Settings saved"
+  },
+  "permissions": {
+    "title": "Roles and permissions",
+    "subtitle": "Which sections each role can open. Read only.",
+    "caption": "Roles and sections matrix",
+    "section": "Section",
+    "allowed": "Allowed",
+    "denied": "Not allowed",
+    "note": "Permissions are checked on the server: a section hidden from the menu can't be opened with a direct link either."
   }
 }

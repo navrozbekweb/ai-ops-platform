@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
-import { getSession } from "@/lib/auth/session";
+import { requirePageActor } from "@/lib/auth/actor-page";
+import { statsFor } from "@/lib/data/service";
 import type { Role } from "@/lib/auth/roles";
 
 export async function generateMetadata({
@@ -13,23 +13,29 @@ export async function generateMetadata({
   return { title: t("dashboard") };
 }
 
-// Namuna raqamlar. Haqiqiy API ulanganda shu yerda o'qiladi.
-const KPI_BY_ROLE: Record<Role, ReadonlyArray<{ key: string; value: string }>> = {
-  admin: [
-    { key: "users", value: "57" },
+type Stats = ReturnType<typeof statsFor>;
+
+// Raqamlar ma'lumotlar ombordan hisoblanadi (Vazifalar sahifasi bilan mos). Sessiyalar,
+// samaradorlik va tizim holati hozircha namunaviy: ularning manbai keyingi bosqichda ulanadi.
+const KPI_BY_ROLE: Record<
+  Role,
+  (s: Stats) => ReadonlyArray<{ key: string; value: string }>
+> = {
+  admin: (s) => [
+    { key: "users", value: String(s.users) },
     { key: "sessions", value: "42" },
-    { key: "requests", value: "5" },
+    { key: "requests", value: String(s.pending) },
     { key: "system", value: "stable" },
   ],
-  manager: [
-    { key: "teamTasks", value: "34" },
-    { key: "pending", value: "3" },
+  manager: (s) => [
+    { key: "teamTasks", value: String(s.teamTasks) },
+    { key: "pending", value: String(s.pending) },
     { key: "teamPerf", value: "88%" },
-    { key: "late", value: "2" },
+    { key: "late", value: String(s.late) },
   ],
-  employee: [
-    { key: "myTasks", value: "6" },
-    { key: "doneWeek", value: "9" },
+  employee: (s) => [
+    { key: "myTasks", value: String(s.myTasks) },
+    { key: "doneWeek", value: String(s.doneWeek) },
     { key: "myPerf", value: "91%" },
   ],
 };
@@ -41,9 +47,8 @@ export default async function DashboardPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const session = await getSession();
-  if (!session) redirect({ href: "/login", locale });
-  const user = session!;
+  const user = await requirePageActor(locale);
+  const stats = statsFor(user);
 
   const t = await getTranslations("dashboard");
   const tRoles = await getTranslations("roles");
@@ -66,7 +71,7 @@ export default async function DashboardPage({
         aria-label="KPI"
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
       >
-        {KPI_BY_ROLE[user.role].map(({ key, value }) => (
+        {KPI_BY_ROLE[user.role](stats).map(({ key, value }) => (
           <div
             key={key}
             className="border-border bg-surface flex flex-col gap-2.5 rounded-xl border p-5"

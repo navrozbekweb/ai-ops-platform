@@ -38,7 +38,7 @@ export const DEMO_ACCOUNTS: ReadonlyArray<MockUser & { password: string }> = [
     name: "Dilshod Karimov",
     email: "employee@aiops.uz",
     role: "employee",
-    dept: "Savdo",
+    dept: "Moliya",
     password: "Employee#2026",
   },
 ];
@@ -49,17 +49,25 @@ function hashPassword(password: string, salt: string): Buffer {
   return scryptSync(password, salt, KEY_LENGTH);
 }
 
-const store: StoredUser[] = DEMO_ACCOUNTS.map(({ password, ...user }) => {
-  const salt = randomBytes(16).toString("hex");
-  return { ...user, salt, hash: hashPassword(password, salt) };
-});
+// Route handler va server komponentlar alohida bundle bo'lishi mumkin: holat globalThis'da saqlanadi.
+const STORE_KEY = Symbol.for("aiops.mock.credentials");
+type Holder = { [STORE_KEY]?: StoredUser[] };
+
+function credentials(): StoredUser[] {
+  const holder = globalThis as typeof globalThis & Holder;
+  holder[STORE_KEY] ??= DEMO_ACCOUNTS.map(({ password, ...user }) => {
+    const salt = randomBytes(16).toString("hex");
+    return { ...user, salt, hash: hashPassword(password, salt) };
+  });
+  return holder[STORE_KEY];
+}
 
 // Foydalanuvchi topilmaganda ham vaqt bir xil ketishi uchun soxta yozuv.
 const DUMMY_SALT = randomBytes(16).toString("hex");
 const DUMMY_HASH = hashPassword("dummy-password-for-timing", DUMMY_SALT);
 
 export function verifyCredentials(email: string, password: string): MockUser | null {
-  const user = store.find((u) => u.email === email);
+  const user = credentials().find((u) => u.email === email);
   const salt = user?.salt ?? DUMMY_SALT;
   const expected = user?.hash ?? DUMMY_HASH;
   const actual = hashPassword(password, salt);
@@ -76,4 +84,19 @@ export function isMockAuthEnabled(): boolean {
   return (
     process.env.NODE_ENV !== "production" || process.env.MOCK_AUTH_ENABLED === "true"
   );
+}
+
+/**
+ * Joriy parolni tekshirib, yangisini o'rnatadi (faqat xotirada; server qayta ishga tushsa, demo parol qaytadi).
+ * Haqiqiy backendda shu yerda API chaqiruvi bo'ladi.
+ */
+export function changePassword(userId: string, current: string, next: string): boolean {
+  const user = credentials().find((u) => u.id === userId);
+  if (!user) return false;
+  const actual = hashPassword(current, user.salt);
+  if (!timingSafeEqual(actual, user.hash)) return false;
+  const salt = randomBytes(16).toString("hex");
+  user.salt = salt;
+  user.hash = hashPassword(next, salt);
+  return true;
 }
