@@ -8,6 +8,7 @@ Korxona rahbari va xodimlari uchun AI biznes operatsion platformasi: rolga qarab
 - [Hafta 2 hisobi](./docs/weekly/hafta-2.md)
 - [Hafta 3 hisobi](./docs/weekly/hafta-3.md)
 - [Hafta 4 hisobi](./docs/weekly/hafta-4.md)
+- [Hafta 5 hisobi](./docs/weekly/hafta-5.md)
 
 ## Loyiha tuzilmasi
 
@@ -15,22 +16,26 @@ Korxona rahbari va xodimlari uchun AI biznes operatsion platformasi: rolga qarab
 src/
 ├── app/
 │   ├── [locale]/(auth)/        # Login, parolni unutdim, yangi parol
-│   ├── [locale]/(app)/         # Himoyalangan panel (dashboard, vazifalar, foydalanuvchilar, jamoa...)
+│   ├── [locale]/(app)/         # Himoyalangan panel (dashboard, vazifalar, hujjatlar, AI, tahlil, audit, sozlamalar...)
 │   └── api/
 │       ├── auth/               # login, logout, forgot-password, reset-password, session-expired
-│       ├── users/              # Foydalanuvchilar API (mock, ruxsat serverda tekshiriladi)
-│       └── tasks/              # Vazifalar API (mock, ruxsat serverda tekshiriladi)
+│       ├── users/ tasks/       # Foydalanuvchilar va vazifalar API (mock, ruxsat serverda tekshiriladi)
+│       ├── docs/ settings/     # Hujjatlar va tizim sozlamalari API
+│       ├── profile/            # Profil va parolni almashtirish
+│       └── ai/chat/            # AI yordamchi (mock javoblar)
 ├── components/
 │   ├── ui/                     # Modal, ConfirmDialog, DataTable, forma maydonlari, Badge, Toast, Popover
 │   ├── layout/                 # AppShell, Sidebar, Header, Breadcrumbs, CommandPalette, bildirishnomalar
 │   ├── auth/                   # Login va parol formalari
 │   ├── users/ tasks/ team/     # Sahifa komponentlari
+│   ├── profile/ documents/ ai/ audit/ settings/  # Hafta 5 bo'limlari
 │   └── providers/              # Mavzu va Ant Design provayderlari
 ├── i18n/                       # next-intl sozlamalari (uz, ru, en)
 ├── lib/
 │   ├── auth/                   # Rollar, token, sessiya, Zod sxemalari
 │   ├── api/                    # API himoyasi: aktyor, limit, javoblar
 │   ├── data/                   # Mock ombor va servis (backend ulanganda almashtiriladi)
+│   ├── ai/                     # Mock AI yordamchi (backend ulanganda LLM bilan almashtiriladi)
 │   ├── mock/                   # Mock hisoblar va bildirishnomalar
 │   └── schemas/                # Umumiy Zod sxemalari
 ├── messages/                   # uz.json, ru.json, en.json
@@ -90,6 +95,20 @@ Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlayd
 - **Admin:** barcha bo'limlar, foydalanuvchilarni boshqarish, rollar va tizim sozlamalari.
 - **Rahbar:** butun korxonani ko'radi (faqat o'qish), o'z jamoasiga vazifa tayinlaydi va tasdiqlaydi. Xodim qo'sha olmaydi.
 - **Xodim:** o'z vazifalari, hujjatlari, AI yordamchi va profil.
+
+## Bo'limlar (hafta 5)
+
+| Bo'lim             | Kimga         | Nima qiladi                                                                   |
+| ------------------ | ------------- | ----------------------------------------------------------------------------- |
+| Profil             | Hamma         | Ismni tahrirlash, joriy parolni tekshirib almashtirish                        |
+| Hujjatlar          | Hamma         | Ro'yxat, qidirish, qo'shish va o'chirish; shaxsiy yoki umumiy ruxsat          |
+| AI yordamchi       | Hamma         | Chat: vazifalar, kechikishlar, hujjatlar va tasdiqlar haqida (mock javoblar)  |
+| Korxona tahlili    | Admin, rahbar | KPI, holat va bo'limlar bo'yicha grafiklar, xodimlar yuklamasi (faqat o'qish) |
+| Audit jurnali      | Admin         | Foydalanuvchi, vazifa, hujjat va sozlamalardagi amallar tarixi                |
+| Tizim sozlamalari  | Admin         | Kompaniya nomi, AI yordamchini yoqish/o'chirish, email bildirishnomalari      |
+| Rollar va huquqlar | Admin         | Rol va bo'limlar matritsasi (faqat ko'rish)                                   |
+
+Ma'lumotlar xotirada saqlanadi (mock): server qayta ishga tushsa, boshlang'ich holatga qaytadi, parol almashtirish ham.
 
 Ruxsatlar bitta joyda: [`src/lib/auth/roles.ts`](./src/lib/auth/roles.ts). Himoya uch qatlamda: `src/proxy.ts` (har so'rovda), `(app)/layout.tsx` va har sahifada serverda qayta tekshiruv. API ham ruxsatni serverda tekshiradi.
 

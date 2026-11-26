@@ -45,3 +45,21 @@ export function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-");
   return `${day}.${month}.${year}`;
 }
+
+const TASHKENT_TIME = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Tashkent",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+});
+
+/** Sana va vaqt: kun.oy.yil soat:daqiqa (Toshkent vaqti; server va brauzerda bir xil chiqadi). */
+export function formatDateTime(iso: string): string {
+  const parts = Object.fromEntries(
+    TASHKENT_TIME.formatToParts(new Date(iso)).map((p) => [p.type, p.value]),
+  );
+  return `${parts.day}.${parts.month}.${parts.year} ${parts.hour}:${parts.minute}`;
+}

@@ -256,7 +256,15 @@
       "priorityRequired": "Choose a priority",
       "dueInvalid": "Enter a valid due date",
       "noteRequired": "Enter a reason (at least 3 characters)",
-      "noteTooLong": "Note is too long (up to 300 characters)"
+      "noteTooLong": "Note is too long (up to 300 characters)",
+      "currentRequired": "Enter your current password",
+      "passwordWeak": "At least 8 characters with upper, lower case and a digit",
+      "passwordMismatch": "Passwords do not match",
+      "categoryRequired": "Choose a type",
+      "companyRequired": "Enter a company name (at least 2 characters)",
+      "companyTooLong": "Name is too long (up to 80 characters)",
+      "messageRequired": "Type your question",
+      "messageTooLong": "Question is too long (up to 500 characters)"
     }
   },
   "apiErrors": {
@@ -273,7 +281,10 @@
     "noteRequired": "Enter the reason for returning it.",
     "validation": "The data you entered is not valid.",
     "empty": "There is nothing to change.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "wrongPassword": "The current password is incorrect.",
+    "aiDisabled": "The AI assistant has been turned off by an administrator.",
+    "rate_limited": "Too many attempts. Please try again shortly."
   },
   "users": {
     "title": "Users",
@@ -456,5 +467,204 @@
       "title": "Nothing to review",
       "text": "Submitted work will show up here."
     }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Personal details and security.",
+    "details": {
+      "title": "Personal details",
+      "name": "Full name",
+      "email": "Email",
+      "emailLocked": "Email identifies the account and can't be changed.",
+      "role": "Role",
+      "dept": "Department",
+      "manager": "Manager",
+      "save": "Save",
+      "saved": "Profile updated"
+    },
+    "password": {
+      "title": "Change password",
+      "desc": "For security, enter your current password first.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Repeat new password",
+      "hint": "At least 8 characters with upper and lower case letters and a digit.",
+      "submit": "Update password",
+      "success": "Password updated"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": {
+      "admin": "Documents across the company.",
+      "manager": "Your, your team's and shared documents.",
+      "employee": "Your and shared documents."
+    },
+    "caption": "Documents table",
+    "add": "Add document",
+    "columns": {
+      "title": "Document",
+      "category": "Type",
+      "owner": "Author",
+      "updated": "Updated",
+      "access": "Access",
+      "actions": "Actions"
+    },
+    "category": {
+      "contract": "Contract",
+      "report": "Report",
+      "policy": "Policy",
+      "other": "Other"
+    },
+    "filters": {
+      "category": "Type",
+      "all": "All"
+    },
+    "access": {
+      "shared": "Shared",
+      "private": "Private"
+    },
+    "delete": "Delete",
+    "deleteAria": "Delete: {title}",
+    "form": {
+      "createTitle": "New document",
+      "createDesc": "Enter the document details. File upload will come in a later stage.",
+      "title": "Title",
+      "category": "Type",
+      "description": "Description",
+      "shared": "Visible to all employees",
+      "sharedHint": "If unchecked, only you, your manager and an administrator can see it.",
+      "submit": "Add"
+    },
+    "confirm": {
+      "deleteTitle": "Delete this document?",
+      "deleteText": "“{title}” will be permanently deleted.",
+      "deleteConfirm": "Delete"
+    },
+    "toast": {
+      "created": "Document added",
+      "deleted": "Document deleted"
+    },
+    "empty": {
+      "title": "No documents",
+      "text": "Add the first document."
+    }
+  },
+  "ai": {
+    "title": "AI assistant",
+    "subtitle": "Ask about tasks, documents and your team. This is a demo mode: answers are built from your own data.",
+    "disabled": {
+      "title": "AI assistant is turned off",
+      "text": "An administrator can turn it on in System settings."
+    },
+    "log": "Conversation",
+    "you": "You",
+    "assistant": "Assistant",
+    "welcome": "Hello! I can help with tasks, documents and approvals. Pick a question below or type your own.",
+    "inputLabel": "Your question",
+    "placeholder": "For example: which of my tasks are overdue?",
+    "send": "Send",
+    "thinking": "The assistant is typing...",
+    "suggestionsLabel": "Quick questions",
+    "suggestions": {
+      "tasks": "My tasks",
+      "late": "Overdue tasks",
+      "docs": "My documents",
+      "help": "What can you help with?"
+    },
+    "suggestionTexts": {
+      "tasks": "How are my tasks doing?",
+      "late": "Which tasks are overdue?",
+      "docs": "How many documents do I have?",
+      "help": "What can you help with?"
+    },
+    "replies": {
+      "greeting": "Hello, {name}! How can I help today?",
+      "help": "I can tell you about your tasks, overdue work, documents and items waiting for approval.",
+      "tasks": "You have {open} active tasks. Among the tasks visible to you, {late} are overdue.",
+      "late": "Overdue tasks: {count}. The main ones: {list}.",
+      "noLate": "No overdue tasks. Great!",
+      "approvals": "Items waiting for your approval: {count}.",
+      "docs": "Documents visible to you: {count}.",
+      "team": "Your team has {count} active members.",
+      "fallback": "I didn't understand that yet. Try asking about tasks, overdue work, documents or approvals."
+    }
+  },
+  "analytics": {
+    "title": "Company analytics",
+    "subtitle": "Task metrics across the whole company. Read only.",
+    "kpi": {
+      "total": "Total tasks",
+      "open": "Active",
+      "done": "Completed",
+      "late": "Overdue",
+      "rate": "Completion"
+    },
+    "byStatus": "By status",
+    "byDept": "By department",
+    "byPerson": "Workload by person",
+    "legendOpen": "Active",
+    "legendDone": "Completed",
+    "caption": "Tasks by employee",
+    "columns": {
+      "name": "Employee",
+      "open": "Active",
+      "done": "Completed",
+      "late": "Overdue"
+    },
+    "empty": "No data yet"
+  },
+  "audit": {
+    "title": "Audit log",
+    "subtitle": "History of important actions in the system. Admin only.",
+    "caption": "Audit log",
+    "columns": {
+      "time": "Time",
+      "actor": "Who",
+      "action": "Action",
+      "target": "Subject"
+    },
+    "filters": {
+      "action": "Action",
+      "all": "All"
+    },
+    "actions": {
+      "user_create": "Added a user",
+      "user_update": "Changed a user",
+      "user_delete": "Deleted a user",
+      "task_create": "Created a task",
+      "task_update": "Updated a task",
+      "task_delete": "Deleted a task",
+      "doc_create": "Added a document",
+      "doc_delete": "Deleted a document",
+      "settings_update": "Changed settings",
+      "profile_update": "Updated a profile",
+      "password_change": "Changed a password"
+    },
+    "empty": {
+      "title": "No entries",
+      "text": "Actions will appear here once they happen."
+    }
+  },
+  "settings": {
+    "title": "System settings",
+    "subtitle": "General settings. Admin only.",
+    "company": "Company name",
+    "companyHint": "Shown in reports and messages.",
+    "aiEnabled": "Turn on the AI assistant",
+    "aiHint": "When off, employees can't use the AI assistant.",
+    "emailNotifications": "Email notifications",
+    "emailHint": "Send notifications about tasks and approvals (demo for now).",
+    "save": "Save",
+    "saved": "Settings saved"
+  },
+  "permissions": {
+    "title": "Roles and permissions",
+    "subtitle": "Which sections each role can open. Read only.",
+    "caption": "Roles and sections matrix",
+    "section": "Section",
+    "allowed": "Allowed",
+    "denied": "Not allowed",
+    "note": "Permissions are checked on the server: a section hidden from the menu can't be opened with a direct link either."
   }
 }
