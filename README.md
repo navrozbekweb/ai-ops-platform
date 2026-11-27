@@ -9,6 +9,7 @@ Korxona rahbari va xodimlari uchun AI biznes operatsion platformasi: rolga qarab
 - [Hafta 3 hisobi](./docs/weekly/hafta-3.md)
 - [Hafta 4 hisobi](./docs/weekly/hafta-4.md)
 - [Hafta 5 hisobi](./docs/weekly/hafta-5.md)
+- [Hafta 6 hisobi](./docs/weekly/hafta-6.md)
 
 ## Loyiha tuzilmasi
 
@@ -35,7 +36,7 @@ src/
 │   ├── auth/                   # Rollar, token, sessiya, Zod sxemalari
 │   ├── api/                    # API himoyasi: aktyor, limit, javoblar
 │   ├── data/                   # Mock ombor va servis (backend ulanganda almashtiriladi)
-│   ├── ai/                     # Mock AI yordamchi (backend ulanganda LLM bilan almashtiriladi)
+│   ├── ai/                     # AI yordamchi: haqiqiy Claude (live.ts, context.ts) va mock (mock.ts)
 │   ├── mock/                   # Mock hisoblar va bildirishnomalar
 │   └── schemas/                # Umumiy Zod sxemalari
 ├── messages/                   # uz.json, ru.json, en.json
@@ -89,6 +90,21 @@ Rol login formasida tanlanmaydi, email va paroldan avtomatik aniqlanadi.
 | Xodim  | `employee@aiops.uz` | `Employee#2026` |
 
 Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlaydi Login sahifasidagi demo hisoblar ro'yxati sukut bo'yicha yashirin; ko'rsatish uchun `SHOW_DEMO_ACCOUNTS=true` qo'ying (hisoblar pastdagi jadvalda). **Ochiq internetga chiqariladigan muhitda buni o'chiring.**
+
+## AI yordamchi sozlamasi
+
+Chat ikki rejimda ishlaydi:
+
+- **Namunaviy (standart):** `ANTHROPIC_API_KEY` yo'q bo'lsa, javoblar kalit so'zlar bo'yicha tuziladi.
+- **Haqiqiy:** `ANTHROPIC_API_KEY` bo'lsa, javobni Claude (Anthropic API) beradi. Modelga faqat so'rayotgan foydalanuvchi o'zi ko'ra oladigan vazifalar, hujjatlar va ko'rsatkichlar beriladi; model hech narsani o'zgartira olmaydi.
+
+```bash
+# .env.local (yoki Vercel → Settings → Environment Variables, "Sensitive" qilib)
+ANTHROPIC_API_KEY=sk-ant-...
+AI_MODEL=claude-haiku-5-5   # ixtiyoriy; kuchliroq: claude-sonnet-5-5
+```
+
+Kalit faqat serverda o'qiladi va brauzerga yuborilmaydi. Xarajat nazorati: javob 600 tokengacha, suhbat tarixi 8 ta xabargacha, har foydalanuvchiga daqiqasiga 30 ta so'rov, administrator Tizim sozlamalarida AI'ni o'chira oladi. Vercel'da o'zgaruvchi qo'shilgach, loyihani qayta deploy qilish kerak.
 
 ## Rollar
 

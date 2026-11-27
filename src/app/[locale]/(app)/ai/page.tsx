@@ -3,6 +3,7 @@ import { AiChat } from "@/components/ai/AiChat";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { requirePageActor } from "@/lib/auth/actor-page";
+import { isLiveAi } from "@/lib/ai/live";
 import { getSettings } from "@/lib/data/sections";
 
 export async function generateMetadata({
@@ -28,7 +29,10 @@ export default async function AiPage({
 
   return (
     <>
-      <PageHeader title={t("title")} subtitle={t("subtitle")} />
+      <PageHeader
+        title={t("title")}
+        subtitle={t(isLiveAi() ? "subtitleLive" : "subtitle")}
+      />
       {enabled ? (
         <AiChat />
       ) : (

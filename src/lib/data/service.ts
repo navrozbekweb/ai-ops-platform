@@ -29,6 +29,7 @@ export type ApiErrorCode =
   | "validation"
   | "wrongPassword"
   | "aiDisabled"
+  | "aiUnavailable"
   | "empty";
 
 const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
@@ -46,6 +47,7 @@ const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
   validation: 400,
   wrongPassword: 400,
   aiDisabled: 409,
+  aiUnavailable: 502,
   empty: 400,
 };
 

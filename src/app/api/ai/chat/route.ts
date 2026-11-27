@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { getTranslations } from "next-intl/server";
+import { AiUnavailableError, isLiveAi, liveReply } from "@/lib/ai/live";
 import { aiReply } from "@/lib/ai/mock";
 import { clientIp, jsonError, jsonOk, rateLimit, readJson } from "@/lib/api/guard";
 import { withActor } from "@/lib/api/respond";
@@ -21,12 +22,27 @@ export async function POST(request: NextRequest) {
         return response;
       }
 
+      if (isLiveAi()) {
+        try {
+          const reply = await liveReply(
+            actor,
+            body.data.history ?? [],
+            body.data.message,
+            body.data.locale,
+          );
+          return jsonOk({ reply, live: true });
+        } catch (error) {
+          if (error instanceof AiUnavailableError) return jsonError("aiUnavailable", 502);
+          throw error;
+        }
+      }
+
       const { key, params } = aiReply(actor, body.data.message);
       const t = await getTranslations({
         locale: body.data.locale,
         namespace: "ai.replies",
       });
-      return jsonOk({ reply: t(key, params) });
+      return jsonOk({ reply: t(key, params), live: false });
     },
     { write: true },
   );

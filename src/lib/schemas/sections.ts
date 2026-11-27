@@ -44,5 +44,10 @@ export type SettingsInput = z.input<typeof settingsSchema>;
 export const aiChatSchema = z.object({
   message: z.string().trim().min(1, "messageRequired").max(500, "messageTooLong"),
   locale: z.enum(routing.locales),
+  /** Oldingi suhbat (haqiqiy AI uchun kontekst). Brauzer oxirgi 8 tasini, har biri 500 belgigacha yuboradi. */
+  history: z
+    .array(z.object({ role: z.enum(["user", "assistant"]), text: z.string().max(500) }))
+    .max(8)
+    .optional(),
 });
 export type AiChatInput = z.input<typeof aiChatSchema>;
