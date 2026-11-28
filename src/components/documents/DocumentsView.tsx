@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { PlusOutlined } from "@ant-design/icons";
+import { DownloadOutlined, PlusOutlined } from "@ant-design/icons";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
@@ -12,6 +12,7 @@ import { FilterSelect } from "@/components/ui/fields";
 import { useToast } from "@/components/ui/Toast";
 import { api, formatDate, useApiErrorText } from "@/lib/client/api";
 import type { DocView } from "@/lib/data/types";
+import { formatBytes } from "@/lib/schemas/files";
 import { DOC_CATEGORIES } from "@/lib/schemas/sections";
 import { DocFormModal } from "./DocFormModal";
 
@@ -39,6 +40,11 @@ export function DocumentsView({ docs }: { docs: DocView[] }) {
           <span className="font-medium">{d.title}</span>
           {d.description ? (
             <span className="text-muted line-clamp-1 text-xs">{d.description}</span>
+          ) : null}
+          {d.file ? (
+            <span className="text-muted line-clamp-1 text-xs">
+              {t("fileMeta", { name: d.file.name, size: formatBytes(d.file.size) })}
+            </span>
           ) : null}
         </div>
       ),
@@ -80,17 +86,31 @@ export function DocumentsView({ docs }: { docs: DocView[] }) {
       hiddenHeader: true,
       mobileInline: true,
       className: "text-right",
-      cell: (d) =>
-        d.canDelete ? (
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-label={t("deleteAria", { title: d.title })}
-            onClick={() => setRemoving(d)}
-          >
-            {t("delete")}
-          </Button>
-        ) : null,
+      cell: (d) => (
+        <div className="flex items-center justify-end gap-1">
+          {d.file ? (
+            <a
+              href={`/api/docs/${d.id}/file`}
+              download
+              aria-label={t("downloadAria", { title: d.title })}
+              className="text-accent hover:bg-surface-2 focus-visible:outline-accent inline-flex min-h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-1"
+            >
+              <DownloadOutlined aria-hidden="true" />
+              {t("download")}
+            </a>
+          ) : null}
+          {d.canDelete ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              aria-label={t("deleteAria", { title: d.title })}
+              onClick={() => setRemoving(d)}
+            >
+              {t("delete")}
+            </Button>
+          ) : null}
+        </div>
+      ),
     },
   ];
 

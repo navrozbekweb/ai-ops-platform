@@ -264,7 +264,10 @@
       "companyRequired": "Kompaniya nomini kiriting (kamida 2 belgi)",
       "companyTooLong": "Nom juda uzun (80 belgigacha)",
       "messageRequired": "Savolingizni yozing",
-      "messageTooLong": "Savol juda uzun (500 belgigacha)"
+      "messageTooLong": "Savol juda uzun (500 belgigacha)",
+      "fileEmpty": "Fayl bo'sh",
+      "fileTooLarge": "Fayl juda katta (eng ko'pi bilan {size})",
+      "fileType": "Bu fayl turi qabul qilinmaydi"
     }
   },
   "apiErrors": {
@@ -285,7 +288,10 @@
     "wrongPassword": "Joriy parol noto'g'ri.",
     "aiDisabled": "AI yordamchi administrator tomonidan o'chirilgan.",
     "rate_limited": "Juda ko'p urinish. Birozdan keyin qayta urinib ko'ring.",
-    "aiUnavailable": "AI xizmati hozir javob bermayapti. Birozdan keyin qayta urinib ko'ring."
+    "aiUnavailable": "AI xizmati hozir javob bermayapti. Birozdan keyin qayta urinib ko'ring.",
+    "fileTooLarge": "Fayl juda katta. Eng ko'pi bilan 2 MB.",
+    "fileType": "Bu fayl turi qabul qilinmaydi yoki fayl kengaytmasiga mos emas.",
+    "storageFull": "Fayl ombori to'lgan. Administratorga murojaat qiling."
   },
   "users": {
     "title": "Foydalanuvchilar",
@@ -529,13 +535,15 @@
     "deleteAria": "O'chirish: {title}",
     "form": {
       "createTitle": "Yangi hujjat",
-      "createDesc": "Hujjat ma'lumotlarini kiriting. Fayl yuklash keyingi bosqichda qo'shiladi.",
+      "createDesc": "Hujjat ma'lumotlarini kiriting va xohlasangiz fayl biriktiring.",
       "title": "Sarlavha",
       "category": "Turi",
       "description": "Tavsif",
       "shared": "Hamma xodimlarga ko'rinsin",
       "sharedHint": "Belgilanmasa, faqat siz, rahbaringiz va administrator ko'radi.",
-      "submit": "Qo'shish"
+      "submit": "Qo'shish",
+      "file": "Fayl (ixtiyoriy)",
+      "fileHint": "PDF, Word, Excel, PowerPoint, rasm, TXT yoki CSV. Eng ko'pi bilan {size}."
     },
     "confirm": {
       "deleteTitle": "Hujjatni o'chiramizmi?",
@@ -549,7 +557,10 @@
     "empty": {
       "title": "Hujjatlar yo'q",
       "text": "Birinchi hujjatni qo'shing."
-    }
+    },
+    "download": "Yuklab olish",
+    "downloadAria": "Faylni yuklab olish: {title}",
+    "fileMeta": "Fayl: {name} ({size})"
   },
   "ai": {
     "title": "AI yordamchi",
@@ -639,6 +650,7 @@
       "task_delete": "Vazifani o'chirdi",
       "doc_create": "Hujjat qo'shdi",
       "doc_delete": "Hujjatni o'chirdi",
+      "doc_download": "Hujjat faylini yuklab oldi",
       "settings_update": "Sozlamalarni o'zgartirdi",
       "profile_update": "Profilni yangiladi",
       "password_change": "Parolni almashtirdi"

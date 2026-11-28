@@ -34,6 +34,9 @@ export type TaskView = Task & {
   can: { manage: boolean; advance: TaskStatus[] };
 };
 
+/** Hujjatga biriktirilgan fayl metama'lumoti (baytlarning o'zi `files.ts` omborida). */
+export type DocFile = { name: string; size: number; mime: string };
+
 export type Doc = {
   id: string;
   title: string;
@@ -43,6 +46,7 @@ export type Doc = {
   /** Hamma ko'ra oladimi (aks holda faqat egasi, uning rahbari va admin). */
   shared: boolean;
   updatedAt: string;
+  file?: DocFile;
 };
 
 export type DocView = Doc & { ownerName: string; canDelete: boolean };
@@ -56,6 +60,7 @@ export const AUDIT_ACTIONS = [
   "task_delete",
   "doc_create",
   "doc_delete",
+  "doc_download",
   "settings_update",
   "profile_update",
   "password_change",

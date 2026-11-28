@@ -30,6 +30,9 @@ export type ApiErrorCode =
   | "wrongPassword"
   | "aiDisabled"
   | "aiUnavailable"
+  | "fileTooLarge"
+  | "fileType"
+  | "storageFull"
   | "empty";
 
 const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
@@ -48,6 +51,9 @@ const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
   wrongPassword: 400,
   aiDisabled: 409,
   aiUnavailable: 502,
+  fileTooLarge: 413,
+  fileType: 415,
+  storageFull: 507,
   empty: 400,
 };
 
