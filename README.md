@@ -78,17 +78,6 @@ docs/weekly/                    # Haftalik hisobotlar
 
    Brauzerda `http://localhost:3000` ochiladi va `/uz/login` ga yo'naltiradi.
 
-## Demo hisoblar (mock)
-
-Rol login formasida tanlanmaydi, email va paroldan avtomatik aniqlanadi.
-
-| Rol    | Email               | Parol           |
-| ------ | ------------------- | --------------- |
-| Admin  | `admin@aiops.uz`    | `Admin#2026`    |
-| Rahbar | `manager@aiops.uz`  | `Manager#2026`  |
-| Xodim  | `employee@aiops.uz` | `Employee#2026` |
-
-Production build'da mock kirish faqat `MOCK_AUTH_ENABLED=true` bo'lganda ishlaydi Login sahifasidagi demo hisoblar ro'yxati sukut bo'yicha yashirin; ko'rsatish uchun `SHOW_DEMO_ACCOUNTS=true` qo'ying (hisoblar pastdagi jadvalda). **Ochiq internetga chiqariladigan muhitda buni o'chiring.**
 
 ## Rollar
 
