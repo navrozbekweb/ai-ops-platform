@@ -144,6 +144,8 @@ E2E uchun bir marta `npx playwright install chromium` kerak. Tayyor Chromium bo'
 
 ## Backend ulanganda
 
+Batafsil qo'llanma: [docs/BACKENDCHI-UCHUN.md](./docs/BACKENDCHI-UCHUN.md) (o'rnatish, API shartnomasi, ma'lumot modeli).
+
 1. `src/lib/mock/users.ts` dagi `verifyCredentials` va `src/lib/data/service.ts` funksiyalarini API chaqiruvlariga almashtiring.
 2. `forgot-password` va `reset-password` route'lariga haqiqiy pochta va bir martalik token qo'shing.
 3. `MOCK_AUTH_ENABLED` va `src/lib/mock/` ni olib tashlang.
