@@ -209,3 +209,36 @@ export function CheckboxField({
     </div>
   );
 }
+
+/**
+ * Fayl tanlash maydoni (RHF'dan tashqarida, holat tashqarida saqlanadi). Tanlangan fayl nomi
+ * brauzerning o'z kontrolida ko'rinadi; xato matni `aria-describedby` bilan ulanadi.
+ */
+export function FileField({
+  label,
+  error,
+  hint,
+  required,
+  ref,
+  ...props
+}: Common &
+  Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "id"> & {
+    ref?: Ref<HTMLInputElement>;
+  }) {
+  const id = useId();
+  return (
+    <Shell id={id} label={label} error={error} hint={hint} required={required}>
+      <input
+        id={id}
+        ref={ref}
+        type="file"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy(id, error, hint)}
+        {...props}
+        className={`${control} file:bg-accent file:text-accent-text min-h-11 cursor-pointer py-1.5 file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:px-3 file:py-1.5 file:text-sm file:font-medium ${
+          error ? "border-danger" : "border-border"
+        }`}
+      />
+    </Shell>
+  );
+}

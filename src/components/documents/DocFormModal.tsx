@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import {
   CheckboxField,
+  FileField,
   InputField,
   SelectField,
   TextareaField,
@@ -15,6 +16,12 @@ import {
 import { Modal } from "@/components/ui/Modal";
 import { useToast } from "@/components/ui/Toast";
 import { api, useApiErrorText } from "@/lib/client/api";
+import {
+  DOC_FILE_ACCEPT,
+  DOC_FILE_MAX_BYTES,
+  checkFileClientSide,
+  formatBytes,
+} from "@/lib/schemas/files";
 import {
   DOC_CATEGORIES,
   docCreateSchema,
@@ -43,6 +50,9 @@ function DocForm({ onDone }: { onDone: () => void }) {
   const router = useRouter();
   const toast = useToast();
   const [formError, setFormError] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | undefined>();
+  const fileInput = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -54,10 +64,29 @@ function DocForm({ onDone }: { onDone: () => void }) {
   });
   const fieldError = (key?: string) => (key ? tv(key) : undefined);
 
+  const onFileChange = (selected: File | null) => {
+    const problem = selected ? checkFileClientSide(selected) : null;
+    setFileError(
+      problem ? tv(problem, { size: formatBytes(DOC_FILE_MAX_BYTES) }) : undefined,
+    );
+    setFile(problem ? null : selected);
+    if (problem && fileInput.current) fileInput.current.value = "";
+  };
+
   const onSubmit = handleSubmit(async (values) => {
     setFormError(null);
     try {
-      await api("/api/docs", { method: "POST", body: values });
+      if (file) {
+        const form = new FormData();
+        form.set("title", values.title);
+        form.set("category", values.category);
+        form.set("description", values.description);
+        form.set("shared", String(values.shared));
+        form.set("file", file);
+        await api("/api/docs", { method: "POST", form });
+      } else {
+        await api("/api/docs", { method: "POST", body: values });
+      }
       toast.show(t("toast.created"));
       router.refresh();
       onDone();
@@ -92,6 +121,14 @@ function DocForm({ onDone }: { onDone: () => void }) {
         label={t("form.description")}
         error={fieldError(errors.description?.message)}
         {...register("description")}
+      />
+      <FileField
+        ref={fileInput}
+        label={t("form.file")}
+        hint={t("form.fileHint", { size: formatBytes(DOC_FILE_MAX_BYTES) })}
+        accept={DOC_FILE_ACCEPT}
+        error={fileError}
+        onChange={(event) => onFileChange(event.target.files?.[0] ?? null)}
       />
       <CheckboxField
         label={t("form.shared")}

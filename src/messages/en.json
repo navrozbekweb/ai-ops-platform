@@ -264,7 +264,10 @@
       "companyRequired": "Enter a company name (at least 2 characters)",
       "companyTooLong": "Name is too long (up to 80 characters)",
       "messageRequired": "Type your question",
-      "messageTooLong": "Question is too long (up to 500 characters)"
+      "messageTooLong": "Question is too long (up to 500 characters)",
+      "fileEmpty": "The file is empty",
+      "fileTooLarge": "The file is too large (up to {size})",
+      "fileType": "This file type is not accepted"
     }
   },
   "apiErrors": {
@@ -285,7 +288,10 @@
     "wrongPassword": "The current password is incorrect.",
     "aiDisabled": "The AI assistant has been turned off by an administrator.",
     "rate_limited": "Too many attempts. Please try again shortly.",
-    "aiUnavailable": "The AI service is not responding right now. Please try again shortly."
+    "aiUnavailable": "The AI service is not responding right now. Please try again shortly.",
+    "fileTooLarge": "The file is too large. Up to 2 MB.",
+    "fileType": "This file type is not accepted or does not match its extension.",
+    "storageFull": "File storage is full. Contact the administrator."
   },
   "users": {
     "title": "Users",
@@ -529,13 +535,15 @@
     "deleteAria": "Delete: {title}",
     "form": {
       "createTitle": "New document",
-      "createDesc": "Enter the document details. File upload will come in a later stage.",
+      "createDesc": "Enter the document details and attach a file if you like.",
       "title": "Title",
       "category": "Type",
       "description": "Description",
       "shared": "Visible to all employees",
       "sharedHint": "If unchecked, only you, your manager and an administrator can see it.",
-      "submit": "Add"
+      "submit": "Add",
+      "file": "File (optional)",
+      "fileHint": "PDF, Word, Excel, PowerPoint, image, TXT or CSV. Up to {size}."
     },
     "confirm": {
       "deleteTitle": "Delete this document?",
@@ -549,7 +557,10 @@
     "empty": {
       "title": "No documents",
       "text": "Add the first document."
-    }
+    },
+    "download": "Download",
+    "downloadAria": "Download file: {title}",
+    "fileMeta": "File: {name} ({size})"
   },
   "ai": {
     "title": "AI assistant",
@@ -639,6 +650,7 @@
       "task_delete": "Deleted a task",
       "doc_create": "Added a document",
       "doc_delete": "Deleted a document",
+      "doc_download": "Downloaded a document file",
       "settings_update": "Changed settings",
       "profile_update": "Updated a profile",
       "password_change": "Changed a password"

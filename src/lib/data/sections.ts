@@ -7,9 +7,10 @@ import type {
   SettingsInput,
 } from "@/lib/schemas/sections";
 import { TASK_STATUSES, type TaskStatus } from "@/lib/schemas/directory";
+import { readFile, removeFile, saveFile, validateUpload } from "./files";
 import { fail, ok, todayIso, type Result } from "./service";
 import { db, logAudit, nextId } from "./store";
-import type { AuditEntry, Doc, DocView, Person, Settings } from "./types";
+import type { AuditEntry, Doc, DocFile, DocView, Person, Settings } from "./types";
 
 /**
  * Profil, hujjatlar, audit, sozlamalar va tahlil. Ruxsatlar shu yerda (serverda) tekshiriladi.
@@ -62,7 +63,19 @@ export function listDocs(actor: Person): DocView[] {
     .map((doc) => docView(actor, doc));
 }
 
-export function createDoc(actor: Person, input: DocCreateInput): Result<DocView> {
+export type UploadedFile = { name: string; bytes: Uint8Array };
+
+export function createDoc(
+  actor: Person,
+  input: DocCreateInput,
+  upload?: UploadedFile,
+): Result<DocView> {
+  let file: DocFile | undefined;
+  if (upload) {
+    const checked = validateUpload(upload.name, upload.bytes);
+    if (!checked.ok) return checked;
+    file = checked.value;
+  }
   const doc: Doc = {
     id: nextId("d"),
     title: input.title.trim(),
@@ -71,7 +84,12 @@ export function createDoc(actor: Person, input: DocCreateInput): Result<DocView>
     ownerId: actor.id,
     shared: input.shared,
     updatedAt: new Date().toISOString(),
+    ...(file ? { file } : {}),
   };
+  if (upload && file) {
+    const saved = saveFile(doc.id, upload.bytes);
+    if (!saved.ok) return saved;
+  }
   db().docs.push(doc);
   logAudit(actor, "doc_create", doc.title);
   return ok(docView(actor, doc));
@@ -82,8 +100,22 @@ export function deleteDoc(actor: Person, id: string): Result<null> {
   if (!doc || !canSeeDoc(actor, doc)) return fail("notFound");
   if (!(actor.role === "admin" || doc.ownerId === actor.id)) return fail("forbidden");
   db().docs = db().docs.filter((d) => d.id !== id);
+  removeFile(id);
   logAudit(actor, "doc_delete", doc.title);
   return ok(null);
+}
+
+/** Faylni yuklab olish: ko'rish huquqi hujjatniki bilan bir xil. Boshqaga "topilmadi" deyiladi. */
+export function downloadDocFile(
+  actor: Person,
+  id: string,
+): Result<{ file: DocFile; bytes: Uint8Array }> {
+  const doc = db().docs.find((d) => d.id === id);
+  if (!doc || !canSeeDoc(actor, doc) || !doc.file) return fail("notFound");
+  const bytes = readFile(id);
+  if (!bytes) return fail("notFound");
+  logAudit(actor, "doc_download", doc.title);
+  return ok({ file: doc.file, bytes });
 }
 
 // ---------------------------------------------------------------- audit jurnali

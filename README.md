@@ -10,6 +10,7 @@ Korxona rahbari va xodimlari uchun AI biznes operatsion platformasi: rolga qarab
 - [Hafta 4 hisobi](./docs/weekly/hafta-4.md)
 - [Hafta 5 hisobi](./docs/weekly/hafta-5.md)
 - [Hafta 6 hisobi](./docs/weekly/hafta-6.md)
+- [Hafta 7 hisobi](./docs/weekly/hafta-7.md)
 
 ## Loyiha tuzilmasi
 
@@ -114,17 +115,19 @@ Kalit faqat serverda o'qiladi va brauzerga yuborilmaydi. Xarajat nazorati: javob
 
 ## Bo'limlar (hafta 5)
 
-| Bo'lim             | Kimga         | Nima qiladi                                                                   |
-| ------------------ | ------------- | ----------------------------------------------------------------------------- |
-| Profil             | Hamma         | Ismni tahrirlash, joriy parolni tekshirib almashtirish                        |
-| Hujjatlar          | Hamma         | Ro'yxat, qidirish, qo'shish va o'chirish; shaxsiy yoki umumiy ruxsat          |
-| AI yordamchi       | Hamma         | Chat: vazifalar, kechikishlar, hujjatlar va tasdiqlar haqida (mock javoblar)  |
-| Korxona tahlili    | Admin, rahbar | KPI, holat va bo'limlar bo'yicha grafiklar, xodimlar yuklamasi (faqat o'qish) |
-| Audit jurnali      | Admin         | Foydalanuvchi, vazifa, hujjat va sozlamalardagi amallar tarixi                |
-| Tizim sozlamalari  | Admin         | Kompaniya nomi, AI yordamchini yoqish/o'chirish, email bildirishnomalari      |
-| Rollar va huquqlar | Admin         | Rol va bo'limlar matritsasi (faqat ko'rish)                                   |
+| Bo'lim             | Kimga         | Nima qiladi                                                                                            |
+| ------------------ | ------------- | ------------------------------------------------------------------------------------------------------ |
+| Profil             | Hamma         | Ismni tahrirlash, joriy parolni tekshirib almashtirish                                                 |
+| Hujjatlar          | Hamma         | Ro'yxat, qidirish, qo'shish va o'chirish; fayl biriktirish va yuklab olish; shaxsiy yoki umumiy ruxsat |
+| AI yordamchi       | Hamma         | Chat: vazifalar, kechikishlar, hujjatlar va tasdiqlar haqida (mock javoblar)                           |
+| Korxona tahlili    | Admin, rahbar | KPI, holat va bo'limlar bo'yicha grafiklar, xodimlar yuklamasi (faqat o'qish)                          |
+| Audit jurnali      | Admin         | Foydalanuvchi, vazifa, hujjat va sozlamalardagi amallar tarixi                                         |
+| Tizim sozlamalari  | Admin         | Kompaniya nomi, AI yordamchini yoqish/o'chirish, email bildirishnomalari                               |
+| Rollar va huquqlar | Admin         | Rol va bo'limlar matritsasi (faqat ko'rish)                                                            |
 
-Ma'lumotlar xotirada saqlanadi (mock): server qayta ishga tushsa, boshlang'ich holatga qaytadi, parol almashtirish ham.
+Ma'lumotlar xotirada saqlanadi (mock): server qayta ishga tushsa, boshlang'ich holatga qaytadi, parol almashtirish va yuklangan fayllar ham.
+
+Hujjatga fayl: PDF, Word, Excel, PowerPoint, PNG/JPG, TXT, CSV; 2 MB gacha. Tur kengaytma va fayl boshidagi baytlar bo'yicha serverda tekshiriladi, yuklab olish faqat `attachment` sifatida va hujjatni ko'ra oladiganlarga beriladi.
 
 Ruxsatlar bitta joyda: [`src/lib/auth/roles.ts`](./src/lib/auth/roles.ts). Himoya uch qatlamda: `src/proxy.ts` (har so'rovda), `(app)/layout.tsx` va har sahifada serverda qayta tekshiruv. API ham ruxsatni serverda tekshiradi.
 

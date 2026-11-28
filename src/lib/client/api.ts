@@ -11,14 +11,20 @@ export class ApiError extends Error {
 /** JSON so'rov. Xato bo'lsa serverning xato kodi bilan `ApiError` tashlaydi. */
 export async function api<T = Record<string, unknown>>(
   url: string,
-  { method, body }: { method: "POST" | "PATCH" | "DELETE"; body?: unknown },
+  {
+    method,
+    body,
+    form,
+  }: { method: "POST" | "PATCH" | "DELETE"; body?: unknown; form?: FormData },
 ): Promise<T> {
   let response: Response;
   try {
     response = await fetch(url, {
       method,
-      headers: body === undefined ? undefined : { "Content-Type": "application/json" },
-      body: body === undefined ? undefined : JSON.stringify(body),
+      // FormData yuborilganda Content-Type'ni brauzer o'zi (boundary bilan) qo'yadi.
+      headers:
+        body === undefined || form ? undefined : { "Content-Type": "application/json" },
+      body: form ?? (body === undefined ? undefined : JSON.stringify(body)),
     });
   } catch {
     throw new ApiError("generic");
