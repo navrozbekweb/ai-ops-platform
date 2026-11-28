@@ -23,9 +23,11 @@ export default async function LoginPage({
   setRequestLocale(locale);
   const t = await getTranslations("auth.login");
 
-  const demoAccounts: DemoAccount[] | null = isMockAuthEnabled()
-    ? DEMO_ACCOUNTS.map(({ role, email, password }) => ({ role, email, password }))
-    : null;
+  // Demo hisoblar bloki faqat SHOW_DEMO_ACCOUNTS=true bo'lganda ko'rinadi (dizaynda ko'rinmasligi uchun sukut bo'yicha yashirin).
+  const demoAccounts: DemoAccount[] | null =
+    isMockAuthEnabled() && process.env.SHOW_DEMO_ACCOUNTS === "true"
+      ? DEMO_ACCOUNTS.map(({ role, email, password }) => ({ role, email, password }))
+      : null;
 
   return (
     <>

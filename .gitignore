@@ -44,3 +44,6 @@ next-env.d.ts
 # playwright
 /test-results/
 /playwright-report/
+
+# `next dev` avtomatik yaratadigan AI yordamchi fayli
+AGENTS.md

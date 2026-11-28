@@ -6,7 +6,7 @@ import type {
   UserCreateOutput,
   UserUpdateInput,
 } from "@/lib/schemas/directory";
-import { db, nextId } from "./store";
+import { db, logAudit, nextId } from "./store";
 import type { Person, Task, TaskView } from "./types";
 
 /**
@@ -27,6 +27,8 @@ export type ApiErrorCode =
   | "invalidTransition"
   | "noteRequired"
   | "validation"
+  | "wrongPassword"
+  | "aiDisabled"
   | "empty";
 
 const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
@@ -42,14 +44,16 @@ const STATUS_BY_CODE: Record<ApiErrorCode, number> = {
   invalidTransition: 409,
   noteRequired: 400,
   validation: 400,
+  wrongPassword: 400,
+  aiDisabled: 409,
   empty: 400,
 };
 
 export type Result<T> =
   { ok: true; value: T } | { ok: false; error: ApiErrorCode; status: number };
 
-const ok = <T>(value: T): Result<T> => ({ ok: true, value });
-const fail = (error: ApiErrorCode): Result<never> => ({
+export const ok = <T>(value: T): Result<T> => ({ ok: true, value });
+export const fail = (error: ApiErrorCode): Result<never> => ({
   ok: false,
   error,
   status: STATUS_BY_CODE[error],
@@ -100,6 +104,7 @@ export function createUser(actor: Person, input: UserCreateOutput): Result<Perso
     active: true,
   };
   db().people.push(created);
+  logAudit(actor, "user_create", created.name);
   return ok(created);
 }
 
@@ -145,6 +150,7 @@ export function updateUser(
     active: nextActive,
     managerId,
   });
+  logAudit(actor, "user_update", target.name);
   return ok(target);
 }
 
@@ -162,6 +168,7 @@ export function deleteUser(actor: Person, id: string): Result<null> {
   database.tasks = database.tasks.filter((t) => t.assigneeId !== id);
   for (const p of database.people) if (p.managerId === id) p.managerId = null;
   database.people = database.people.filter((p) => p.id !== id);
+  logAudit(actor, "user_delete", target.name);
   return ok(null);
 }
 
@@ -245,6 +252,7 @@ export function createTask(actor: Person, input: TaskCreateInput): Result<TaskVi
     updatedAt: new Date().toISOString(),
   };
   db().tasks.push(task);
+  logAudit(actor, "task_create", task.title);
   return ok(view(actor, task));
 }
 
@@ -288,6 +296,7 @@ export function updateTask(
     if (fields.due !== undefined) task.due = fields.due;
   }
   task.updatedAt = new Date().toISOString();
+  logAudit(actor, "task_update", task.title);
   return ok(view(actor, task));
 }
 
@@ -296,6 +305,7 @@ export function deleteTask(actor: Person, id: string): Result<null> {
   if (!task || !canSee(actor, task)) return fail("notFound");
   if (!canManage(actor, task)) return fail("forbidden");
   db().tasks = db().tasks.filter((t) => t.id !== id);
+  logAudit(actor, "task_delete", task.title);
   return ok(null);
 }
 
@@ -313,6 +323,10 @@ export function teamRows(actor: Person): TeamRow[] {
       done: mine.filter((t) => t.status === "done").length,
     };
   });
+}
+
+export function managerNameOf(person: Person): string | null {
+  return person.managerId ? (byId(person.managerId)?.name ?? null) : null;
 }
 
 export function todayIso(): string {

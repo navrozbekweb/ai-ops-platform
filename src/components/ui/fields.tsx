@@ -171,3 +171,41 @@ export function FilterSelect({
     </div>
   );
 }
+
+/** Belgilash katakchasi: butun qator bosiladi (kamida 44px), izoh `aria-describedby` bilan ulanadi. */
+export function CheckboxField({
+  label,
+  hint,
+  className = "",
+  ref,
+  ...props
+}: Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "id"> & {
+  label: string;
+  hint?: string;
+  ref?: Ref<HTMLInputElement>;
+}) {
+  const id = useId();
+  return (
+    <div className="flex flex-col gap-1">
+      <label
+        htmlFor={id}
+        className="flex min-h-11 cursor-pointer items-center gap-3 text-sm font-medium"
+      >
+        <input
+          id={id}
+          ref={ref}
+          type="checkbox"
+          aria-describedby={hint ? `${id}-hint` : undefined}
+          {...props}
+          className={`accent-accent size-5 shrink-0 cursor-pointer ${className}`}
+        />
+        {label}
+      </label>
+      {hint ? (
+        <p id={`${id}-hint`} className="text-muted pl-8 text-xs">
+          {hint}
+        </p>
+      ) : null}
+    </div>
+  );
+}

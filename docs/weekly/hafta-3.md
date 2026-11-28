@@ -30,5 +30,3 @@
 - Qisqartiriladigan elementni `block` qildim, telefonda faqat joriy bo'lim ko'rsatiladi.
 - Amal tugmalarini bir qatorda ushlab, jadvalni o'z ichida gorizontal siljiydigan qildim.
 - Ombor holatini `globalThis` ga oldim, ikkala tomon bitta nusxani ko'radi.
-
-Batafsil hisobot (skrinshotlar bilan): [`reports/week-3.md`](../../reports/week-3.md)

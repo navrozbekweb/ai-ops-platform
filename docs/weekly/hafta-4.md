@@ -27,5 +27,3 @@
 - Saralash tugmasiga `min-h-7` berdim.
 - Amallarni telefonda qator ichiga ko'chirdim (`mobileInline`), test bilan.
 - Bu test artefakti edi: overlay testlarini faqat o'sha overlay'ning o'zini skanerlaydigan qildim.
-
-Batafsil hisobot (skrinshotlar bilan): [`reports/week-4.md`](../../reports/week-4.md)

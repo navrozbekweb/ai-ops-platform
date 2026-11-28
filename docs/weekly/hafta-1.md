@@ -34,5 +34,3 @@
 - CSS qatlam tartibini `@layer theme, base, antd, components, utilities` va `AntdRegistry layer` bilan belgiladim.
 - `localeDetection` ni o'chirdim: platforma asosan o'zbekcha, ildiz sahifa doim `/uz` ga olib boradi.
 - Testlarda aniq nom va matn bo'yicha qidirishga o'tdim.
-
-Batafsil hisobot (skrinshotlar bilan): [`reports/week-1.md`](../../reports/week-1.md)

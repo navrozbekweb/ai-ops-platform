@@ -1,5 +1,5 @@
 import "server-only";
-import type { Person, Task } from "./types";
+import type { AuditEntry, Doc, Person, Settings, Task } from "./types";
 import type { Priority, TaskStatus } from "@/lib/schemas/directory";
 
 /**
@@ -8,7 +8,14 @@ import type { Priority, TaskStatus } from "@/lib/schemas/directory";
  * ikkala tomon bitta nusxani ko'radi. Server qayta ishga tushsa, boshlang'ich holatga qaytadi.
  * Haqiqiy backend ulanganda shu faylning funksiyalari API chaqiruvlariga almashtiriladi.
  */
-type Db = { people: Person[]; tasks: Task[]; seq: number };
+type Db = {
+  people: Person[];
+  tasks: Task[];
+  docs: Doc[];
+  audit: AuditEntry[];
+  settings: Settings;
+  seq: number;
+};
 
 const KEY = Symbol.for("aiops.mock.db");
 type Holder = { [KEY]?: Db };
@@ -189,7 +196,93 @@ function seed(): Db {
     ),
   ];
 
-  return { people, tasks, seq: 100 };
+  const hoursAgo = (h: number) => new Date(Date.now() - h * 3_600_000).toISOString();
+  const d = (
+    n: number,
+    title: string,
+    category: Doc["category"],
+    description: string,
+    ownerId: string,
+    shared: boolean,
+    hours: number,
+  ): Doc => ({
+    id: `d_${n}`,
+    title,
+    category,
+    description,
+    ownerId,
+    shared,
+    updatedAt: hoursAgo(hours),
+  });
+
+  const docs: Doc[] = [
+    d(
+      1,
+      "Ichki tartib qoidalari",
+      "policy",
+      "Barcha xodimlar uchun.",
+      "u_admin",
+      true,
+      300,
+    ),
+    d(2, "Mehnat shartnomasi namunasi", "contract", "HR shabloni.", "u_admin", true, 200),
+    d(
+      3,
+      "Oktyabr moliyaviy hisoboti",
+      "report",
+      "Daromad va xarajatlar.",
+      "u_manager",
+      false,
+      50,
+    ),
+    d(4, "Savdo prognozi Q1", "report", "Qoralama.", "u_manager2", false, 30),
+    d(5, "Yetkazib beruvchi shartnomasi", "contract", "", "u_employee", false, 20),
+    d(6, "Xarajatlar jadvali", "other", "Kategoriyalar bo'yicha.", "u_e1", false, 12),
+  ];
+
+  const audit: AuditEntry[] = [
+    ["a_1", "u_admin", "Sanjar Rasulov", "user_create", "Kamola Hasanova", 70],
+    [
+      "a_2",
+      "u_manager",
+      "Malika Rahimova",
+      "task_create",
+      "Byudjet rejasini yangilash",
+      40,
+    ],
+    ["a_3", "u_admin", "Sanjar Rasulov", "settings_update", "AI Ops", 26],
+    [
+      "a_4",
+      "u_employee",
+      "Dilshod Karimov",
+      "doc_create",
+      "Yetkazib beruvchi shartnomasi",
+      20,
+    ],
+    [
+      "a_5",
+      "u_manager",
+      "Malika Rahimova",
+      "task_update",
+      "Soliq deklaratsiyasi qoralamasi",
+      6,
+    ],
+  ].map(([id, actorId, actorName, action, target, h]) => ({
+    id: id as string,
+    at: hoursAgo(h as number),
+    actorId: actorId as string,
+    actorName: actorName as string,
+    action: action as AuditEntry["action"],
+    target: target as string,
+  }));
+
+  const settings: Settings = {
+    companyName: "AI Ops",
+    aiEnabled: true,
+    emailNotifications: true,
+  };
+
+  return { people, tasks, docs, audit, settings, seq: 100 };
 }
 
 export function db(): Db {
@@ -202,4 +295,18 @@ export function nextId(prefix: string): string {
   const database = db();
   database.seq += 1;
   return `${prefix}_${database.seq}`;
+}
+
+/** Audit jurnaliga yozuv qo'shadi (eng yangisi boshida, 200 tagacha saqlanadi). */
+export function logAudit(actor: Person, action: AuditEntry["action"], target: string) {
+  const database = db();
+  database.audit.unshift({
+    id: nextId("a"),
+    at: new Date().toISOString(),
+    actorId: actor.id,
+    actorName: actor.name,
+    action,
+    target,
+  });
+  if (database.audit.length > 200) database.audit.length = 200;
 }
